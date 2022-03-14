@@ -13,6 +13,7 @@ import { RemoveBeneficiaryComponent } from './remove-beneficiary/remove-benefici
 import { TransferComponent } from './transfer/transfer.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
+import { MismatchedComponent } from './mismatched/mismatched.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { AccountDetailsComponent } from './account-details/account-details.compo
     RemoveBeneficiaryComponent,
     TransferComponent,
     UpdateProfileComponent,
-    AccountDetailsComponent
+    AccountDetailsComponent,
+    MismatchedComponent
   ],
   imports: [
     CommonModule,

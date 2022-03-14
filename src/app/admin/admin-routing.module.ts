@@ -9,6 +9,10 @@ const routes: Routes = [
     component: RegisterStaffComponent,
   },
   {
+    path: 'admin/dashboard',
+    component: ViewStaffComponent,
+  },
+  {
     path: 'admin/viewStaff',
     component: ViewStaffComponent,
   },

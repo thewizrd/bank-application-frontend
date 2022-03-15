@@ -6,16 +6,9 @@ import { HeaderComponent } from './header/header.component';
 import { LandingComponent } from './landing/landing.component';
 import { FooterComponent } from './footer/footer.component';
 
-
 @NgModule({
-  declarations: [
-    HeaderComponent,
-    LandingComponent,
-    FooterComponent
-  ],
-  imports: [
-    CommonModule,
-    CoreRoutingModule
-  ]
+  declarations: [HeaderComponent, LandingComponent, FooterComponent],
+  imports: [CommonModule, CoreRoutingModule],
+  exports: [HeaderComponent, LandingComponent, FooterComponent],
 })
-export class CoreModule { }
+export class CoreModule {}

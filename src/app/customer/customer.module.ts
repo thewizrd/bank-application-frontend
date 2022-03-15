@@ -13,7 +13,7 @@ import { RemoveBeneficiaryComponent } from './remove-beneficiary/remove-benefici
 import { TransferComponent } from './transfer/transfer.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,11 +27,8 @@ import { AccountDetailsComponent } from './account-details/account-details.compo
     RemoveBeneficiaryComponent,
     TransferComponent,
     UpdateProfileComponent,
-    AccountDetailsComponent
+    AccountDetailsComponent,
   ],
-  imports: [
-    CommonModule,
-    CustomerRoutingModule
-  ]
+  imports: [CommonModule, FormsModule, CustomerRoutingModule],
 })
-export class CustomerModule { }
+export class CustomerModule {}

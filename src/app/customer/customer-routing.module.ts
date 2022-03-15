@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AccountDetailsComponent } from './account-details/account-details.component';
 import { AddBeneficiaryComponent } from './add-beneficiary/add-beneficiary.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { LoginComponent } from './login/login.component';
 import { MismatchedComponent } from './mismatched/mismatched.component';
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path: 'customer/register',
     component: RegisterComponent,
+  },
+  {
+    path: 'customer/dashboard',
+    component: DashboardComponent,
   },
   {
     path: 'customer/updateProfile',

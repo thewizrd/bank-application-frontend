@@ -13,6 +13,8 @@ import { RemoveBeneficiaryComponent } from './remove-beneficiary/remove-benefici
 import { TransferComponent } from './transfer/transfer.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
+import { MismatchedComponent } from './mismatched/mismatched.component';
+
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -28,6 +30,7 @@ import { FormsModule } from '@angular/forms';
     TransferComponent,
     UpdateProfileComponent,
     AccountDetailsComponent,
+    MismatchedComponent
   ],
   imports: [CommonModule, FormsModule, CustomerRoutingModule],
 })

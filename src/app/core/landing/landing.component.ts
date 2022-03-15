@@ -20,7 +20,17 @@ export class LandingComponent implements OnInit {
     private _authService: AuthService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this._authService.isLoggedIn()) {
+      if (this._authService.isAdmin()) {
+        this._router.navigate(['/admin/dashboard']);
+      } else if (this._authService.isStaff()) {
+        this._router.navigate(['/staff/dashboard']);
+      } else if (this._authService.isCustomer()) {
+        this._router.navigate(['/customer/dashboard']);
+      }
+    }
+  }
 
   login(): void {
     this._customerService.authCustomer(this.loginForm).subscribe({

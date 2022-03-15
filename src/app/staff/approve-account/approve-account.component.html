@@ -1,1 +1,49 @@
-<p>approve-account works!</p>
+<div class="container">
+  <staff-dashboard></staff-dashboard>
+  <h3 class="text-center">Approve Account</h3>
+  <br />
+  <form class="register-form mx-auto">
+    <div class="row">
+      <div class="col">
+        <label for="accountNumber">Account Number</label>
+        <input
+          type="number"
+          class="form-control"
+          id="accountNumber"
+          name="accountNumber"
+          placeholder="Account Number"
+        />
+      </div>
+      <div class="col">
+        <label for="staffUserName">Approved By</label>
+        <input
+          type="text"
+          class="form-control"
+          id="staffUserName"
+          name="staffUserName"
+          placeholder="Staff Username"
+        />
+      </div>
+    </div>
+    <br />
+    <div class="row row-cols-2">
+      <div class="col">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          role="switch"
+          id="customerIsEnabled"
+          name="customerIsEnabled"
+          checked
+        />
+        <label class="form-check-label" for="customerIsEnabled"
+          >Enable/Disable Customer</label
+        >
+      </div>
+    </div>
+    <br />
+    <div class="float-end d-grid gap-2 col-2 mx-auto">
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </div>
+  </form>
+</div>

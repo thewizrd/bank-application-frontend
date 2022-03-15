@@ -16,8 +16,9 @@
               type="email"
               class="form-control"
               id="floatingInput"
-              name="email"
-              placeholder="name@example.com"
+              name="username"
+              placeholder="Username"
+              [(ngModel)]="loginForm.username"
             />
             <label for="floatingInput">Email address</label>
           </div>
@@ -28,10 +29,15 @@
               id="floatingPassword"
               placeholder="Password"
               name="password"
+              [(ngModel)]="loginForm.password"
             />
             <label for="floatingPassword">Password</label>
           </div>
-          <button class="w-100 btn btn-lg btn-primary" type="submit">
+          <button
+            class="w-100 btn btn-lg btn-primary"
+            type="submit"
+            (click)="login()"
+          >
             Login
           </button>
           <div class="mt-3">

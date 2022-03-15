@@ -23,9 +23,9 @@
         <a href="#" routerLink="/customer/login" class="nav-link">Login</a>
       </li>
       <li *ngIf="!loggedIn" class="nav-item">
-        <a href="#" routerLink="#staff" class="nav-link">Staff Corner</a>
+        <a href="#" routerLink="/staff/login" class="nav-link">Staff Corner</a>
       </li>
-      <li *ngIf="loggedIn && userEmail" class="nav-item">
+      <li *ngIf="loggedIn && username" class="nav-item">
         <a class="nav-link">
           <div style="display: flex">
             <span
@@ -35,12 +35,19 @@
             >
               admin_panel_settings
             </span>
-            <p>{{ userEmail }}</p>
+            <span
+              *ngIf="isStaff"
+              class="material-icons-outlined"
+              style="margin-right: 4px"
+            >
+              badge
+            </span>
+            <p>Welcome {{ username }}</p>
           </div>
         </a>
       </li>
       <li *ngIf="loggedIn" class="nav-item">
-        <a href="#" class="nav-link" (click)="logout()">Logout</a>
+        <button class="nav-link" (click)="logout()">Logout</button>
       </li>
     </ul>
   </header>

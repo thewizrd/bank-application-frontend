@@ -1,4 +1,10 @@
 <div class="container">
+  <div *ngIf="errorMsg" class="alert alert-danger" role="alert">
+    {{ errorMsg }}
+  </div>
+  <div *ngIf="message" class="alert alert-primary" role="alert">
+    {{ message }}
+  </div>
   <div class="row row-cols-2">
     <div class="col">
       <img
@@ -19,10 +25,12 @@
 
               <div class="form-floating">
                 <input
-                  type="email"
+                  type="text"
                   class="form-control"
                   id="floatingInput"
+                  name="username"
                   placeholder="Username"
+                  [(ngModel)]="loginForm.username"
                 />
                 <label for="floatingInput">Username</label>
               </div>
@@ -31,22 +39,31 @@
                   type="password"
                   class="form-control"
                   id="floatingPassword"
+                  name="password"
                   placeholder="Password"
+                  [(ngModel)]="loginForm.password"
                 />
                 <label for="floatingPassword">Password</label>
               </div>
 
-              <button class="w-100 btn btn-lg btn-primary" type="submit">
+              <button
+                class="w-100 btn btn-lg btn-primary"
+                type="submit"
+                (click)="login()"
+              >
                 Login
               </button>
             </form>
             <div class="text-center">
-              <a routerLink="/customer/forgotPassword">Forgot Password?</a>
+              <a href="#" routerLink="/customer/forgotPassword"
+                >Forgot Password?</a
+              >
             </div>
           </div>
         </div>
         <div class="card-footer text-center">
-          Not a customer? <a routerLink="/customer/register">Register here</a>
+          Not a customer?
+          <a href="#" routerLink="/customer/register">Register here</a>
         </div>
       </div>
     </div>

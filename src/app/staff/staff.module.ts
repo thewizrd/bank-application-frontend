@@ -10,6 +10,7 @@ import { ApproveAccountComponent } from './approve-account/approve-account.compo
 import { EnableDisableCustomerComponent } from './enable-disable-customer/enable-disable-customer.component';
 import { TransferComponent } from './transfer/transfer.component';
 
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,11 +20,9 @@ import { TransferComponent } from './transfer/transfer.component';
     ApproveBeneficiaryComponent,
     ApproveAccountComponent,
     EnableDisableCustomerComponent,
-    TransferComponent
+    TransferComponent,
   ],
-  imports: [
-    CommonModule,
-    StaffRoutingModule
-  ]
+  imports: [CommonModule, StaffRoutingModule, FormsModule],
+  exports: [DashboardComponent],
 })
-export class StaffModule { }
+export class StaffModule {}

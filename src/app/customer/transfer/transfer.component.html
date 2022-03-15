@@ -1,1 +1,79 @@
-<p>transfer works!</p>
+<div class="container">
+  //customer dashboard or navbar navbar
+  <h3>Customer Account Transfer</h3>
+  <form>
+    <table>
+      <tr>
+        <td>
+          <form class="form-floating">
+            <input
+              type="number"
+              class="form-control"
+              id="fromAccNumber"
+              name="fromAccountNumber"
+              min="1"
+            />
+            <label for="floatingInputValue">From Account Number</label>
+          </form>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <form class="form-floating">
+            <input
+              type="number"
+              class="form-control"
+              id="toAccNumber"
+              name="toAccountNumber"
+              min="1"
+            />
+            <label for="floatingInputValue">To Account Number</label>
+          </form>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <form class="form-floating">
+            <input
+              type="number"
+              class="form-control"
+              id="amount"
+              name="amount"
+              step=".01"
+              placeholder="0.00"
+            />
+            <label for="floatingInputValue">Amount To Transfer</label>
+          </form>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <form class="form-floating">
+            <input type="text" class="form-control" id="reason" name="reason" />
+            <label for="floatingInputValue">Reason For Transfer</label>
+          </form>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <form class="form-floating">
+            <input
+              type="number"
+              class="form-control"
+              id="byCustomer"
+              name="byCustomer"
+              min="1"
+              placeholder="Customer ID"
+            />
+            <label for="floatingInputValue">Transfer Intitiated By</label>
+          </form>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a class="btn btn-primary" href="#" role="button">Submit</a>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>

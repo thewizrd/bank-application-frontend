@@ -15,6 +15,7 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
 import { AccountDetailsComponent } from './account-details/account-details.component';
 import { MismatchedComponent } from './mismatched/mismatched.component';
 
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,9 +32,6 @@ import { MismatchedComponent } from './mismatched/mismatched.component';
     AccountDetailsComponent,
     MismatchedComponent
   ],
-  imports: [
-    CommonModule,
-    CustomerRoutingModule
-  ]
+  imports: [CommonModule, FormsModule, CustomerRoutingModule],
 })
-export class CustomerModule { }
+export class CustomerModule {}

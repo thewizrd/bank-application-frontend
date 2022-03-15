@@ -5,6 +5,7 @@ import { AddBeneficiaryComponent } from './add-beneficiary/add-beneficiary.compo
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { LoginComponent } from './login/login.component';
+import { MismatchedComponent } from './mismatched/mismatched.component';
 import { RegisterComponent } from './register/register.component';
 import { RemoveBeneficiaryComponent } from './remove-beneficiary/remove-beneficiary.component';
 import { TransferComponent } from './transfer/transfer.component';
@@ -51,6 +52,10 @@ const routes: Routes = [
   {
     path: 'customer/updatePassword',
     component: UpdatePasswordComponent,
+  },
+  {
+    path: 'customer/mismatched',
+    component: MismatchedComponent,
   },
 ];
 

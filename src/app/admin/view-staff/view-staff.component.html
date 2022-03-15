@@ -13,12 +13,27 @@
             <th>Enable/Disable</th>
           </tr>
         </thead>
-        <tbody class="align-middle">
+        <tbody class="align-middle" *ngFor="let staff of staffs">
           <tr>
-            <td>Brett</td>
-            <td>Brett@t3bank.com</td>
-            <td>
-              <button type="button" class="btn btn-success">Enabled</button>
+            <td>{{ staff.staffName }}</td>
+            <td>{{ staff.staffUserName }}</td>
+            <td *ngIf="staff.status == 'ENABLED'">
+              <button
+                type="button"
+                class="btn btn-success"
+                (click)="setDisableStatus(staff.staffId)"
+              >
+                Enabled
+              </button>
+            </td>
+            <td *ngIf="staff.status == 'DISABLED'">
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="setEnableStatus(staff.staffId)"
+              >
+                Disabled
+              </button>
             </td>
           </tr>
         </tbody>

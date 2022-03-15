@@ -14,15 +14,15 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: 'staff/approveAccount',
+    path: 'staff/approve-account',
     component: ApproveAccountComponent,
   },
   {
-    path: 'staff/approveBeneficiary',
+    path: 'staff/approve-beneficiary',
     component: ApproveBeneficiaryComponent,
   },
   {
-    path: 'staff/customerAccounts',
+    path: 'staff/customer-accounts',
     component: CustomerAccountsComponent,
   },
   {
@@ -30,7 +30,7 @@ const routes: Routes = [
     component: DashboardComponent,
   },
   {
-    path: 'staff/updateCustomerStatus',
+    path: 'staff/enable-disable-customer',
     component: EnableDisableCustomerComponent,
   },
   {

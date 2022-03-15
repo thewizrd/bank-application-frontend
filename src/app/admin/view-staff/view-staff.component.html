@@ -1,1 +1,43 @@
-<p>view-staff works!</p>
+<div class="container">
+  <admin-navbar></admin-navbar>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title text-center border-bottom pb-3 mb-3">
+        Enable/Disable Staff
+      </h5>
+      <table class="table table-striped table-hover table-bordered text-center">
+        <thead>
+          <tr>
+            <th>Staff Name</th>
+            <th>Staff Username</th>
+            <th>Enable/Disable</th>
+          </tr>
+        </thead>
+        <tbody class="align-middle" *ngFor="let staff of staffs">
+          <tr>
+            <td>{{ staff.staffName }}</td>
+            <td>{{ staff.staffUserName }}</td>
+            <td *ngIf="staff.status == 'ENABLED'">
+              <button
+                type="button"
+                class="btn btn-success"
+                (click)="setDisableStatus(staff.staffId)"
+              >
+                Enabled
+              </button>
+            </td>
+            <td *ngIf="staff.status == 'DISABLED'">
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="setEnableStatus(staff.staffId)"
+              >
+                Disabled
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

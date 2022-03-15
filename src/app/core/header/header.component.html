@@ -1,1 +1,54 @@
-<p>header works!</p>
+<div class="container">
+  <header
+    class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom"
+  >
+    <a
+      href="/"
+      class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none"
+    >
+      <svg class="bi me-2" width="40" height="32">
+        <use xlink:href="#bootstrap" />
+      </svg>
+      <span class="material-icons-outlined mt-1"> account_balance </span>
+      <span class="ms-1 fs-4">T3 Bank</span>
+    </a>
+
+    <ul class="nav nav-pills">
+      <li *ngIf="!loggedIn" class="nav-item">
+        <a href="#" routerLink="/customer/register" class="nav-link"
+          >Register</a
+        >
+      </li>
+      <li *ngIf="!loggedIn" class="nav-item">
+        <a href="#" routerLink="/customer/login" class="nav-link">Login</a>
+      </li>
+      <li *ngIf="!loggedIn" class="nav-item">
+        <a href="#" routerLink="#staff" class="nav-link">Staff Corner</a>
+      </li>
+      <li *ngIf="loggedIn && username" class="nav-item">
+        <a class="nav-link">
+          <div style="display: flex">
+            <span
+              *ngIf="isAdmin"
+              class="material-icons-outlined"
+              style="margin-right: 4px"
+            >
+              admin_panel_settings
+            </span>
+            <span
+              *ngIf="isStaff"
+              class="material-icons-outlined"
+              style="margin-right: 4px"
+            >
+              badge
+            </span>
+            <p>Welcome {{ username }}</p>
+          </div>
+        </a>
+      </li>
+      <li *ngIf="loggedIn" class="nav-item">
+        <button class="nav-link" (click)="logout()">Logout</button>
+      </li>
+    </ul>
+  </header>
+</div>

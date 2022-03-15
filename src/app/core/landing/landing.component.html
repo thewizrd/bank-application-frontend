@@ -1,1 +1,66 @@
-<p>landing works!</p>
+<div class="container">
+  <div *ngIf="errorMsg" class="alert alert-danger" role="alert">
+    {{ errorMsg }}
+  </div>
+  <div *ngIf="message" class="alert alert-primary" role="alert">
+    {{ message }}
+  </div>
+  <div class="row row-cols-2">
+    <div class="col">
+      <img
+        class="img-fluid"
+        src="assets/etienne-martin-2_K82gx9Uk8-unsplash.jpg"
+        alt="T3 Bank"
+        width="640"
+        height="426"
+      />
+      <p class="text-center fs-3 mt-3">Your #1 Personal Banking Partner</p>
+    </div>
+    <div class="col">
+      <div class="card login-form-card">
+        <div class="card-body">
+          <div class="form-signin">
+            <form class="mb-3">
+              <h1 class="h3 mb-3 fw-normal">Welcome</h1>
+
+              <div class="form-floating">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="floatingInput"
+                  placeholder="Username"
+                  [(ngModel)]="loginForm.username"
+                />
+                <label for="floatingInput">Username</label>
+              </div>
+              <div class="form-floating">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="floatingPassword"
+                  placeholder="Password"
+                  [(ngModel)]="loginForm.password"
+                />
+                <label for="floatingPassword">Password</label>
+              </div>
+
+              <button
+                class="w-100 btn btn-lg btn-primary"
+                type="submit"
+                (click)="login()"
+              >
+                Login
+              </button>
+            </form>
+            <div class="text-center">
+              <a routerLink="/customer/forgotPassword">Forgot Password?</a>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer text-center">
+          Not a customer? <a routerLink="/customer/register">Register here</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

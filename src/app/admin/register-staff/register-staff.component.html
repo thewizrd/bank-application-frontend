@@ -1,1 +1,69 @@
-<p>register-staff works!</p>
+<div class="container">
+  <admin-navbar></admin-navbar>
+  <h3 class="text-center">Register Staff</h3>
+  <br />
+  <form class="register-form mx-auto">
+    <div class="row">
+      <div class="col">
+        <label for="firstName">First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="firstName"
+          name="firstName"
+          placeholder="First Name"
+        />
+      </div>
+      <div class="col">
+        <label for="lastName">Last Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="lastName"
+          name="lastName"
+          placeholder="Last Name"
+        />
+      </div>
+    </div>
+    <br />
+    <div class="row row-cols-2">
+      <div class="col">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          name="username"
+          placeholder="Username"
+        />
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          name="password"
+          placeholder="Password"
+        />
+      </div>
+      <div class="col">
+        <label for="confirmPassword">Confirm Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="confirmPassword"
+          name="confirmPassword"
+          placeholder="Confirm Password"
+        />
+      </div>
+    </div>
+    <br />
+    <div class="float-end d-grid gap-2 col-2 mx-auto">
+      <button class="btn btn-primary" type="submit">Register</button>
+    </div>
+  </form>
+</div>

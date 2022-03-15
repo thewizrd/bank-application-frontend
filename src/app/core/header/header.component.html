@@ -26,24 +26,14 @@
         <a href="#" routerLink="/staff/login" class="nav-link">Staff Corner</a>
       </li>
       <li *ngIf="loggedIn && username" class="nav-item">
-        <a class="nav-link">
-          <div style="display: flex">
-            <span
-              *ngIf="isAdmin"
-              class="material-icons-outlined"
-              style="margin-right: 4px"
-            >
-              admin_panel_settings
-            </span>
-            <span
-              *ngIf="isStaff"
-              class="material-icons-outlined"
-              style="margin-right: 4px"
-            >
-              badge
-            </span>
-            <p>Welcome {{ username }}</p>
-          </div>
+        <a class="nav-link d-flex">
+          <span *ngIf="isAdmin" class="material-icons-outlined me-1">
+            admin_panel_settings
+          </span>
+          <span *ngIf="isStaff" class="material-icons-outlined me-1">
+            badge
+          </span>
+          <span>Welcome {{ username }}</span>
         </a>
       </li>
       <li *ngIf="loggedIn" class="nav-item">

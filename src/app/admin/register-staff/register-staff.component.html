@@ -1,5 +1,11 @@
 <div class="container">
   <admin-navbar></admin-navbar>
+  <div *ngIf="errorMsg" class="alert alert-danger" role="alert">
+    {{ errorMsg }}
+  </div>
+  <div *ngIf="message" class="alert alert-primary" role="alert">
+    {{ message }}
+  </div>
   <h3 class="text-center">Register Staff</h3>
   <br />
   <form class="register-form mx-auto">
@@ -12,6 +18,7 @@
           id="firstName"
           name="firstName"
           placeholder="First Name"
+          [(ngModel)]="registerForm.firstName"
         />
       </div>
       <div class="col">
@@ -22,6 +29,7 @@
           id="lastName"
           name="lastName"
           placeholder="Last Name"
+          [(ngModel)]="registerForm.lastName"
         />
       </div>
     </div>
@@ -35,6 +43,7 @@
           id="username"
           name="username"
           placeholder="Username"
+          [(ngModel)]="registerForm.username"
         />
       </div>
     </div>
@@ -48,6 +57,7 @@
           id="password"
           name="password"
           placeholder="Password"
+          [(ngModel)]="registerForm.password"
         />
       </div>
       <div class="col">
@@ -58,12 +68,15 @@
           id="confirmPassword"
           name="confirmPassword"
           placeholder="Confirm Password"
+          [(ngModel)]="confirmPassword"
         />
       </div>
     </div>
     <br />
     <div class="float-end d-grid gap-2 col-2 mx-auto">
-      <button class="btn btn-primary" type="submit">Register</button>
+      <button class="btn btn-primary" type="submit" (click)="registerStaff()">
+        Register
+      </button>
     </div>
   </form>
 </div>

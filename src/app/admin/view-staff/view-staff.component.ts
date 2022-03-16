@@ -25,7 +25,7 @@ export class ViewStaffComponent implements OnInit {
 
     this._adminService.updateStaffStatus(request).subscribe({
       next: (result) => {
-        window.location.reload();
+        this.reloadData();
       },
       error: (err) => {
         console.log(err.message);
@@ -40,7 +40,7 @@ export class ViewStaffComponent implements OnInit {
 
     this._adminService.updateStaffStatus(request).subscribe({
       next: (result) => {
-        window.location.reload();
+        this.reloadData();
       },
       error: (err) => {
         console.log(err.message);

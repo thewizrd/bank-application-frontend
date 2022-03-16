@@ -25,6 +25,9 @@ export class CustomerAccountsComponent implements OnInit {
           .concat(this.accounts.lastName);
         this.accountBalance = this.accounts.balance;
       },
+      error: (err) => {
+        console.log(err.message);
+      },
     });
   }
 

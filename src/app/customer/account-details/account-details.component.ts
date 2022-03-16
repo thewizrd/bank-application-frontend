@@ -15,7 +15,7 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 })
 export class AccountDetailsComponent implements OnInit {
   customerId: any;
-  accountDetails: AccountDetailsResponse | null = null;
+  accountDetails = {} as AccountDetailsResponse;
   transaction: TransactionsResponse[] = [];
   accounts: AllAccountsResponse[] = [];
   accountNum: any;
@@ -48,6 +48,10 @@ export class AccountDetailsComponent implements OnInit {
       .getCustomerAccounts(this.customerId)
       .subscribe((accounts) => {
         this.accounts = accounts;
+
+        if (!this.accountDetails.accountNumber && accounts.length > 0) {
+          this.changeAccountNumber(accounts[0].accountNumber);
+        }
       });
     this.customerService
       .getCustomerAccountByID(this.customerId, this.accountNum)

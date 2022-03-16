@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, tap, throwError } from 'rxjs';
 import { AccountLookupResponse } from '../interfaces/account-lookup-response';
+import { AllAccountsResponse } from '../interfaces/all-accounts-response';
 import { AllCustomersResponse } from '../interfaces/all-customers-response';
 import { ApprovedAccountResponse } from '../interfaces/approved-account-response';
 import { CustomerResponseFromStaff } from '../interfaces/customer-response-from-staff';

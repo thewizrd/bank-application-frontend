@@ -13,13 +13,15 @@ export class UpdatePasswordComponent implements OnInit {
   username: any;
   constructor(
     private router: ActivatedRoute,
-    private customerService: CustomerService
+    private customerService: CustomerService,
+    private _router: Router
   ) {}
 
   ngOnInit(): void {
     this.router.queryParams.subscribe((data) => {
       this.username = data['username'];
     });
+    console.log(this.username);
   }
 
   doSubmit() {
@@ -28,13 +30,15 @@ export class UpdatePasswordComponent implements OnInit {
       document.getElementById('confirmPassword')?.focus();
       this.resetPassword.confirmPassword = '';
     } else {
+      this.resetPassword.username = this.username;
+      console.log('username: ' + this.username);
       this.customerService
         .updateForgottenPassword(this.username, this.resetPassword)
         .subscribe(
           (data) => console.log(data),
           (error) => console.log(error)
         );
-      location.href = 'customer/login';
+      this._router.navigate(['/customer/login']);
     }
   }
 }

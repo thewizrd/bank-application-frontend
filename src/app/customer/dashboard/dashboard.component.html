@@ -47,6 +47,14 @@
       <div
         class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
       ></div>
+      <input
+        name="errorMsg"
+        id="errorMsg"
+        [(ngModel)]="errorMsg"
+        [value]="errorMsg"
+        class="form-control"
+        disabled="disabled"
+      />
       <!-- account  -->
       <div class="card-columns">
         <div class="card shadow rounded" *ngFor="let account of accounts">

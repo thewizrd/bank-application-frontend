@@ -58,6 +58,7 @@
             placeholder="Enter Account Number"
             name="accountNumber"
             required
+            [(ngModel)]="account.accountNumber"
           />
           <label class="form-label" for="accountNumber">Account Number</label>
         </div>
@@ -70,6 +71,7 @@
             placeholder="Comfirm Account Number"
             name="accountNumber"
             required
+            #comfirmAccount
           />
           <label class="form-label" for="comfirmAccount"
             >Comfirm Account Number</label

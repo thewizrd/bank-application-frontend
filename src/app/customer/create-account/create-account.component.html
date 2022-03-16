@@ -45,7 +45,7 @@
       ></div>
 
       <!-- account  -->
-      <form id="create-account-form" (ngSubmit)="onSubmit()">
+      <form id="create-account-form" name="myForm" (ngSubmit)="onSubmit()">
         <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px">
           Create Account
         </h3>
@@ -53,14 +53,15 @@
         <div class="form-outline mb-4">
           <input
             type="number"
-            min="100"
+            min="0"
             id="initialDeposit"
             class="form-control form-control-lg"
             placeholder="Enter Initial Deposit"
             [(ngModel)]="account.accountBalance"
+            name="initialDeposit"
             required
-            name="balance"
           />
+
           <label class="form-label" for="initialDeposit"
             >$ Inltial Deposit</label
           >

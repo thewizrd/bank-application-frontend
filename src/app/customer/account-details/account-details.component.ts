@@ -57,4 +57,18 @@ export class AccountDetailsComponent implements OnInit {
         this.transaction = data.transaction;
       });
   }
+  downloadFile(data: any, type: number, name: string) {
+    const blob = new Blob([data], { type: 'text/xlsx' });
+    const dataURL = window.URL.createObjectURL(blob);
+    if (window.navigator) {
+    }
+    const a = document.createElement('a');
+    a.href = dataURL;
+    a.download = 'export file.xlsx';
+    a.click();
+  }
+
+  download() {
+    this.transaction.forEach((data) => this.downloadFile(data, 2, 'file'));
+  }
 }

@@ -9,6 +9,11 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
   styleUrls: ['./transfer.component.css'],
 })
 export class TransferComponent implements OnInit {
+  amount: any;
+  fromAccNumber: any;
+  toAccNumber: any;
+  reason: any;
+
   constructor(
     private _staffService: StaffService,
     private _tokenStorageService: TokenStorageService
@@ -22,19 +27,11 @@ export class TransferComponent implements OnInit {
     if (token === null) {
       console.log('Unable to verify staff member.');
     } else {
-      request.amount = parseFloat(
-        (<HTMLInputElement>document.getElementById('amount')).value
-      );
+      request.amount = this.amount;
       request.byStaff = token.username;
-      request.fromAccNumber = parseInt(
-        (<HTMLInputElement>document.getElementById('fromAccNumber')).value
-      );
-      request.reason = (<HTMLInputElement>(
-        document.getElementById('reason')
-      )).value;
-      request.toAccNumber = parseInt(
-        (<HTMLInputElement>document.getElementById('toAccNumber')).value
-      );
+      request.fromAccNumber = this.fromAccNumber;
+      request.reason = this.reason;
+      request.toAccNumber = this.toAccNumber;
       this._staffService.doTransfer(request).subscribe({
         next: (result) => {
           alert('Transfer Successful');

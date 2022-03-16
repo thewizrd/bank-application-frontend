@@ -22,14 +22,15 @@ export class ApproveAccountComponent implements OnInit {
   }
 
   setApprovedStatus(accountNumber: number): void {
-    const request = new ApprovedAccountRequest();
     const token = this._tokenStorageService.getTokenResponse();
     if (token === null) {
       console.log('Unable to get staff username.');
     } else {
+      const request = new ApprovedAccountRequest();
       request.accountNumber = accountNumber;
-      request.isApproved = 'yes';
+      request.approved = 'yes';
       request.staffUserName = token.username;
+
       this._staffService.approveCustomerAccounts(request).subscribe({
         next: (result) => {
           window.location.reload();

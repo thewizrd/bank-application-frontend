@@ -100,7 +100,7 @@ export class CustomerService {
   ): Observable<AccountDetailsResponse> {
     return this._httpClient
       .get<AccountDetailsResponse>(
-        this.baseUrl + customerID + 'account/' + accountID
+        this.baseUrl + customerID + '/account/' + accountID
       )
       .pipe(catchError(this.errorHandler));
   }

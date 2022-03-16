@@ -17,14 +17,10 @@ export class ForgotPasswordComponent implements OnInit {
   correctAnswer: any;
   constructor(
     private router: Router,
-    private customerService: CustomerService,
-    private _tokenService: TokenStorageService
+    private customerService: CustomerService
   ) {}
 
   ngOnInit(): void {
-    const jwtToken = this._tokenService.getTokenResponse();
-    this.customerId = jwtToken?.id;
-    this.customerName = jwtToken?.username;
     this.customerService
       .getCustomerSecurityQandA(this.customerName)
       .subscribe((data) => {
@@ -35,7 +31,11 @@ export class ForgotPasswordComponent implements OnInit {
 
   // to check the answer is correct or not
   onSubmit() {
-    if (this.answer == this.correctAnswer) {
+    if (this.answer != this.correctAnswer) {
+      location.href = 'customer/mismatched';
+    } else {
+      location.href =
+        'customer/customer/updatePassword?username=' + this.customerName;
     }
   }
 }

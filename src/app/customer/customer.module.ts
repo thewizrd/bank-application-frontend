@@ -16,6 +16,7 @@ import { AccountDetailsComponent } from './account-details/account-details.compo
 
 import { FormsModule } from '@angular/forms';
 import { MismatchedComponent } from './mismatched/mismatched.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { MismatchedComponent } from './mismatched/mismatched.component';
     UpdateProfileComponent,
     AccountDetailsComponent,
     MismatchedComponent,
+    NavbarComponent,
   ],
   imports: [CommonModule, FormsModule, CustomerRoutingModule],
 })

@@ -4,30 +4,33 @@
     <table>
       <tr>
         <td>
+          <label for="floatingInputValue">From Account Number</label>
           <input
             type="number"
             class="form-control"
             id="fromAccNumber"
             name="fromAccNumber"
             min="1"
+            [ngModel]="fromAccNumber"
           />
-          <label for="floatingInputValue">From Account Number</label>
         </td>
       </tr>
       <tr>
         <td>
+          <label for="floatingInputValue">To Account Number</label>
           <input
             type="number"
             class="form-control"
             id="toAccNumber"
             name="toAccNumber"
             min="1"
+            [(ngModel)]="toAccNumber"
           />
-          <label for="floatingInputValue">To Account Number</label>
         </td>
       </tr>
       <tr>
         <td>
+          <label for="floatingInputValue">Amount To Transfer</label>
           <input
             type="number"
             class="form-control"
@@ -36,25 +39,31 @@
             min="0.01"
             step=".01"
             placeholder="0.00"
+            [(ngModel)]="amount"
           />
-          <label for="floatingInputValue">Amount To Transfer</label>
         </td>
       </tr>
       <tr>
         <td>
-          <input type="text" class="form-control" id="reason" name="reason" />
           <label for="floatingInputValue">Reason For Transfer</label>
+          <input
+            type="text"
+            class="form-control"
+            id="reason"
+            name="reason"
+            [(ngModel)]="reason"
+          />
         </td>
       </tr>
       <tr>
         <td>
-          <a
-            class="btn btn-primary"
-            href="#"
-            role="button"
-            onclick="initiateTransfer()"
-            >Submit</a
+          <button
+            class="w-100 btn btn-lg btn-primary"
+            type="submit"
+            (click)="initiateTransfer()"
           >
+            Transfer
+          </button>
         </td>
       </tr>
     </table>

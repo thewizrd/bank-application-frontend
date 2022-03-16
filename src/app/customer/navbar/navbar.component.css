@@ -94,3 +94,22 @@
   border-color: transparent;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
 }
+
+.sidebar2 .nav-link {
+  font-weight: 500;
+  color: #333;
+}
+
+.sidebar2 .nav-link .feather {
+  margin-right: 4px;
+  color: #727272;
+}
+
+.sidebar2 .nav-link.active {
+  color: #2470dc;
+}
+
+.sidebar2 .nav-link:hover .feather,
+.sidebar2 .nav-link.active .feather {
+  color: inherit;
+}

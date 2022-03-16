@@ -7,6 +7,7 @@ import { TransactionLookupResponse } from 'src/app/interfaces/transaction-lookup
 import { TransactionsResponse } from 'src/app/interfaces/transactions-response';
 import { CustomerService } from 'src/app/services/customer.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-account-details',
@@ -57,18 +58,24 @@ export class AccountDetailsComponent implements OnInit {
         this.transaction = data.transaction;
       });
   }
-  downloadFile(data: any, type: number, name: string) {
-    const blob = new Blob([data], { type: 'text/xlsx' });
-    const dataURL = window.URL.createObjectURL(blob);
-    if (window.navigator) {
-    }
-    const a = document.createElement('a');
-    a.href = dataURL;
-    a.download = 'export file.xlsx';
-    a.click();
-  }
+  // downloadFile(data: any, type: number, name: string) {
+  //   const blob = new Blob([data], { type: 'text/xlsx' });
+  //   const dataURL = window.URL.createObjectURL(blob);
+  //   if (window.navigator) {
+  //   }
+  //   const a = document.createElement('a');
+  //   a.href = dataURL;
+  //   a.download = 'export file.xlsx';
+  //   a.click();
+  // }
 
+  // download() {
+  //   this.transaction.forEach((data) => this.downloadFile(data, 2, 'file'));
+  // }
   download() {
-    this.transaction.forEach((data) => this.downloadFile(data, 2, 'file'));
+    const blob = new Blob([document.getElementById('exportable')!.innerHTML], {
+      type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    });
+    saveAs(blob, 'accountStatment.xls');
   }
 }

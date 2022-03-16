@@ -51,26 +51,27 @@
             Download
           </button>
         </div>
-
-        <table id="table" class="table table-striped table-sm">
-          <thead></thead>
-          <thead>
-            <tr>
-              <th scope="col">Date</th>
-              <th scope="col">Reference</th>
-              <th scope="col">Amount</th>
-              <th scope="col">Cr/Db</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let trans of transaction">
-              <td>{{ trans.date }}</td>
-              <td>{{ trans.reference }}</td>
-              <td>{{ trans.amount }}</td>
-              <td>{{ trans.transactionType }}</td>
-            </tr>
-          </tbody>
-        </table>
+        <div id="exportable">
+          <table id="table" class="table table-striped table-sm">
+            <thead></thead>
+            <thead>
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Reference</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Cr/Db</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let trans of transaction">
+                <td>{{ trans.date }}</td>
+                <td>{{ trans.reference }}</td>
+                <td>{{ trans.amount }}</td>
+                <td>{{ trans.transactionType }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </main>
   </div>

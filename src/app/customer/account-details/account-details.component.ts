@@ -15,7 +15,7 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 })
 export class AccountDetailsComponent implements OnInit {
   customerId: any;
-  accountDetails = {} as AccountDetailsResponse;
+  accountDetails: AccountDetailsResponse | null = null;
   transaction: TransactionsResponse[] = [];
   accounts: AllAccountsResponse[] = [];
   accountNum: any;

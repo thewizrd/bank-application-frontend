@@ -3,18 +3,65 @@
   <div class="card">
     <div class="card-body">
       <h5 class="card-title text-center border-bottom pb-3 mb-3">
-        Customer Accounts
+        Account Details
       </h5>
+      <form>
+        <table>
+          <tr>
+            <td>
+              <label for="CustomerID">Account Number </label>
+            </td>
+            <td>
+              <input
+                type="number"
+                class="form-control"
+                id="accountNumber"
+                name="accountNumber"
+                min="1"
+                [(ngModel)]="accountNumber"
+              />
+            </td>
+            <td>
+              <button
+                class="w-100 btn btn-lg btn-primary"
+                type="submit"
+                (click)="viewAccounts()"
+              >
+                Search
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="customerName">Name: {{ customerName }}</label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="accountBalance"> Balance: {{ accountBalance }}</label>
+            </td>
+          </tr>
+        </table>
+      </form>
       <table class="table table-striped table-hover table-bordered text-center">
         <thead>
           <tr>
-            <th>Account Number</th>
-            <th>Account Type</th>
-            <th>Account Balance</th>
+            <th>Date</th>
+            <th>Reference</th>
+            <th>Amount</th>
+            <th>CR/DB</th>
           </tr>
         </thead>
-        <tbody class="align-middle">
-          //table data from db
+        <tbody
+          class="align-middle"
+          *ngFor="let transaction of accounts.transactions"
+        >
+          <tr>
+            <td>{{ transaction.date }}</td>
+            <td>{{ transaction.reference }}</td>
+            <td>{{ transaction.amount }}</td>
+            <td>{{ transaction.transactionType }}</td>
+          </tr>
         </tbody>
       </table>
     </div>

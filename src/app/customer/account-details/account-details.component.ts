@@ -15,10 +15,11 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 })
 export class AccountDetailsComponent implements OnInit {
   customerId: any;
-  accountDetails = {} as AccountDetailsResponse;
+  accountDetails: AccountDetailsResponse | null = null;
   transaction: TransactionsResponse[] = [];
   accounts: AllAccountsResponse[] = [];
   accountNum: any;
+
   constructor(
     private customerService: CustomerService,
     public router: ActivatedRoute,
@@ -26,20 +27,45 @@ export class AccountDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.router.queryParams.subscribe((data) => {
-      this.accountNum = data['id'];
-    });
-    console.log('accountNUm' + this.accountNum);
     const jwtToken = this._tokenService.getTokenResponse();
     this.customerId = jwtToken?.id;
 
+    this.router.queryParams.subscribe((data) => {
+      this.accountNum = data['id'];
+      console.log('accountNUm: ' + this.accountNum);
+
+      if (this.accountNum) {
+        this.loadAccountInfo(this.accountNum);
+      }
+    });
+
+    this.loadAllAccounts();
+  }
+
+  loadAllAccounts(): void {
     this.customerService
       .getCustomerAccounts(this.customerId)
       .subscribe((accounts) => {
         this.accounts = accounts;
+
+        console.log('accountNUm: ' + this.accountNum);
+        console.log('accounts: ' + accounts);
+        console.log('accountDetails: ' + this.accountDetails);
+
+        if (!this.accountNum && this.accounts.length > 0) {
+          this.accountNum = this.accounts[0].accountNumber;
+        }
+        if (!this.accountDetails) {
+          this.loadAccountInfo(this.accountNum);
+        }
       });
+  }
+
+  loadAccountInfo(accountNum: number) {
+    this.accountNum = accountNum;
+
     this.customerService
-      .getCustomerAccountByID(this.customerId, this.accountNum)
+      .getCustomerAccountByID(this.customerId, accountNum)
       .subscribe((data) => {
         console.log(data);
         this.accountDetails = data;

@@ -1,62 +1,46 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
-    <nav
-      id="sidebarMenu"
-      class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
-    >
-      <div class="position-sticky pt-3">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="customer/dashboard">
-              <span data-feather="home"></span>
-              Dashboard
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="customer/createAccount">
-              Create Account
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="customer/addBeneficiary">
-              Add Beneficiary
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="customer/removeBeneficiary">
-              Remove Beneficiary
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="customer/accountDetails">
-              Account Details
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"> Transfer </a>
+    <customer-navbar
+      class="nav flex-column d-flex col-md-auto me-4"
+    ></customer-navbar>
+
+    <main class="col">
+      <div class="dropdown">
+        <button
+          class="btn btn-body border-dark dropdown-toggle"
+          type="button"
+          id="accountDropdown"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <span *ngIf="!accountNum"> Please select an account </span>
+          <span *ngIf="accountNum && accountDetails">
+            {{ accountNum }} - {{ accountDetails.accountType }}
+          </span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="accountDropdown">
+          <li *ngFor="let account of accounts">
+            <button
+              class="dropdown-item"
+              (click)="loadAccountInfo(account.accountNumber)"
+            >
+              {{ account.accountNumber }} - {{ account.accountType }}
+            </button>
           </li>
         </ul>
       </div>
-    </nav>
-
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <div
-        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
-      ></div>
-
-      <!-- <div class="input-group">
-        <select class="form-control" id="sel1">
-          <option selected="true" disabled="disabled">
-            Please Click To Select Account
-          </option>
-          <option *ngFor="let account of accounts">
-            {{ account.accountNumber }}
-          </option>
-        </select>
-      </div> -->
+      <br />
       <div>
-        <p>Account No. {{ accountDetails.accountNumber }}</p>
-        <p>Balance: {{ accountDetails.accountBalance }}</p>
+        <p>
+          Account No.:
+          <span *ngIf="accountDetails">{{ accountDetails.accountNumber }}</span>
+        </p>
+        <p>
+          Balance:
+          <span *ngIf="accountDetails">{{
+            accountDetails.accountBalance
+          }}</span>
+        </p>
       </div>
 
       <div class="table-responsive">

@@ -5,57 +5,54 @@
     ></customer-navbar>
 
     <main class="col">
-      <div class="dropdown">
-        <button
-          class="btn btn-body border-dark dropdown-toggle"
-          type="button"
-          id="accountDropdown"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
+      <div class="input-group">
+        <span class="input-group-text">Account No. :</span>
+        <select
+          class="form-select"
+          id="sel1"
+          [(ngModel)]="accountDetails.accountNumber"
+          (ngModelChange)="changeAccountNumber($event)"
         >
-          <span *ngIf="!accountNum"> Please select an account </span>
-          <span *ngIf="accountNum && accountDetails">
-            {{ accountNum }} - {{ accountDetails.accountType }}
-          </span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="accountDropdown">
-          <li *ngFor="let account of accounts">
-            <button
-              class="dropdown-item"
-              (click)="loadAccountInfo(account.accountNumber)"
-            >
-              {{ account.accountNumber }} - {{ account.accountType }}
-            </button>
-          </li>
-        </ul>
+          <option selected="true" disabled="disabled">
+            Please Click To Select Account
+          </option>
+          <option
+            *ngFor="let account of accounts"
+            [value]="account.accountNumber"
+          >
+            {{ account.accountNumber }}
+          </option>
+        </select>
       </div>
       <br />
       <div>
-        <p>
+        <h4>
           Account No.:
           <span *ngIf="accountDetails">{{ accountDetails.accountNumber }}</span>
-        </p>
-        <p>
+        </h4>
+        <h4>
           Balance:
           <span *ngIf="accountDetails">{{
             accountDetails.accountBalance
           }}</span>
-        </p>
+        </h4>
       </div>
 
       <div class="table-responsive">
         <div>
           <h5 style="text-align: center">Account Details</h5>
+
           <button
             class="tn btn-primary btn-sm"
             type="button"
             style="margin-left: 80%; margin-bottom: 0.5%"
+            (click)="download()"
           >
             Download
           </button>
         </div>
 
-        <table class="table table-striped table-sm">
+        <table id="table" class="table table-striped table-sm">
           <thead></thead>
           <thead>
             <tr>

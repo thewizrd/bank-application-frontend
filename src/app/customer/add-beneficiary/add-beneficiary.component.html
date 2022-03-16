@@ -13,24 +13,26 @@
 
         <div class="form-outline mb-4">
           <input
-            type="text"
+            type="number"
             id="accountNumber"
             class="form-control form-control-lg"
             placeholder="Enter Account Number"
             name="accountNumber"
             required
+            [(ngModel)]="account.accountNumber"
           />
           <label class="form-label" for="accountNumber">Account Number</label>
         </div>
 
         <div class="form-outline mb-4">
           <input
-            type="text"
+            type="number"
             id="comfirmAccount"
             class="form-control form-control-lg"
             placeholder="Comfirm Account Number"
             name="accountNumber"
             required
+            #comfirmAccount
           />
           <label class="form-label" for="comfirmAccount"
             >Comfirm Account Number</label

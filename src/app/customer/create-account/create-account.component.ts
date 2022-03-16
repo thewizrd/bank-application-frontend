@@ -35,11 +35,23 @@ export class CreateAccountComponent implements OnInit {
     this.create();
   }
   create() {
-    this.customerService.createAccount(this.customerId, this.account).subscribe(
-      (data) => console.log(data),
-      (error) => console.log(error)
-    );
-    this.gotoList();
+    if (
+      this.account.accountBalance! < 0 ||
+      this.account.accountBalance == null ||
+      this.account.accountBalance! == 0
+    ) {
+      document.getElementById('initialDeposit')?.focus();
+      window.alert('initialDeposit must be greater than zero!');
+    } else {
+      this.customerService
+        .createAccount(this.customerId, this.account)
+        .subscribe(
+          (data) => console.log(data),
+          (error) => console.log(error)
+        );
+      window.alert('Create account success!');
+      this.gotoList();
+    }
   }
   public get accountType(): typeof AccountType {
     return AccountType;

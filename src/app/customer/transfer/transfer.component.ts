@@ -25,6 +25,7 @@ export class TransferComponent implements OnInit {
     if (this.fromAccNumber === this.toAccNumber) {
       alert('You cannot transfer funds to the same account.');
     } else {
+      console.log('initiating transfer');
       const request = new TransferRequest();
       const token = this._tokenStorageService.getTokenResponse();
       if (token === null) {

@@ -20,22 +20,23 @@ export class ForgotPasswordComponent implements OnInit {
     private customerService: CustomerService
   ) {}
 
-  ngOnInit(): void {
-    this.customerService
-      .getCustomerSecurityQandA(this.customerName)
-      .subscribe((data) => {
-        this.question = data.securityQuestion;
-        this.correctAnswer = data.securityAnswer;
-      });
-  }
+  ngOnInit(): void {}
 
   // to check the answer is correct or not
   onSubmit() {
     if (this.answer != this.correctAnswer) {
       location.href = 'customer/mismatched';
     } else {
-      location.href =
-        'customer/customer/updatePassword?username=' + this.customerName;
+      location.href = 'customer/updatePassword?username=' + this.customerName;
     }
+  }
+  getcustomerName(value: any) {
+    this.customerName = value;
+    this.customerService
+      .getCustomerSecurityQandA(this.customerName)
+      .subscribe((data) => {
+        this.question = data.securityQuestion;
+        this.correctAnswer = data.securityAnswer;
+      });
   }
 }

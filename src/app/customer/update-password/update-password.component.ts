@@ -18,7 +18,7 @@ export class UpdatePasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.queryParams.subscribe((data) => {
-      this.username = data;
+      this.username = data['username'];
     });
   }
 

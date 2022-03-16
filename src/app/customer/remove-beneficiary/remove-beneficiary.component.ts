@@ -33,9 +33,11 @@ export class RemoveBeneficiaryComponent implements OnInit {
       .subscribe(
         (data) => {
           console.log(data);
+          window.alert('delete Beneficiary successfully');
         },
         (error) => console.log(error)
       );
+
     this.getBeneficiaries();
   }
   getBeneficiaries() {

@@ -27,6 +27,7 @@ export class TransferComponent implements OnInit {
     if (token === null) {
       console.log('Unable to verify customer.');
     } else {
+      console.log('initiating transfer');
       request.by = token.id;
       request.fromAccNumber = this.fromAccNumber;
       request.reason = this.reason;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountType } from 'src/app/enums/account-type';
 import { AddBeneficiaryRequest } from 'src/app/models/add-beneficiary-request';
@@ -14,6 +14,8 @@ export class AddBeneficiaryComponent implements OnInit {
   account: AddBeneficiaryRequest = new AddBeneficiaryRequest();
   customerId: any;
   submitted = false;
+  @ViewChild('comfirmAccount')
+  comfirmAccount: ElementRef | undefined;
 
   constructor(
     private customerService: CustomerService,
@@ -35,13 +37,32 @@ export class AddBeneficiaryComponent implements OnInit {
   }
 
   create() {
-    this.customerService
-      .addBeneficiaryToCustomer(this.customerId, this.account)
-      .subscribe(
-        (data) => console.log(data),
-        (error) => console.log(error)
+    if (
+      this.account.accountNumber == null ||
+      this.comfirmAccount?.nativeElement.value == '' ||
+      this.account.accountNumber != this.comfirmAccount?.nativeElement.value
+    ) {
+      console.log(
+        this.account.accountNumber +
+          ',' +
+          this.comfirmAccount?.nativeElement.value
       );
-    this.gotoList();
+      window.alert('account number must be match');
+      document.getElementById('comfirmAccount')?.focus();
+    } else {
+      console.log(
+        this.account.accountNumber +
+          ',' +
+          this.comfirmAccount?.nativeElement.value
+      );
+      this.customerService
+        .addBeneficiaryToCustomer(this.customerId, this.account)
+        .subscribe(
+          (data) => console.log(data),
+          (error) => console.log(error)
+        );
+      this.gotoList();
+    }
   }
 
   gotoList() {

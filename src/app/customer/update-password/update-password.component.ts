@@ -31,13 +31,14 @@ export class UpdatePasswordComponent implements OnInit {
       this.resetPassword.confirmPassword = '';
     } else {
       this.resetPassword.username = this.username;
-      console.log('username: ' + this.username);
+      // console.log('username: ' + this.username);
       this.customerService
         .updateForgottenPassword(this.username, this.resetPassword)
         .subscribe(
           (data) => console.log(data),
           (error) => console.log(error)
         );
+      window.alert('password updated successfully');
       this._router.navigate(['/customer/login']);
     }
   }

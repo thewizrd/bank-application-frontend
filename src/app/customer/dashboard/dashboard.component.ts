@@ -13,6 +13,8 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 export class DashboardComponent implements OnInit {
   customerId: any;
   accounts: AllAccountsResponse[] = [];
+  accountsV: AllAccountsResponse[] = [];
+  errorMsg: string = '';
 
   constructor(
     private router: Router,
@@ -27,10 +29,17 @@ export class DashboardComponent implements OnInit {
   reloadData() {
     const jwtToken = this._tokenService.getTokenResponse();
     this.customerId = jwtToken?.id;
+
     this.customerService
       .getCustomerAccounts(this.customerId)
-      .subscribe((accounts) => {
-        this.accounts = accounts;
+      .subscribe((accountss) => {
+        this.accountsV = accountss;
+        if (this.accountsV.length > 0) {
+          this.accounts = this.accountsV;
+        } else {
+          this.errorMsg =
+            'There No Account Available, please create a new account';
+        }
       });
   }
 

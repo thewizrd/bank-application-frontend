@@ -6,7 +6,7 @@
 
     <main class="col">
       <div class="input-group">
-        <span class="input-group-text">Account No.</span>
+        <span class="input-group-text">Account No. :</span>
         <select
           class="form-select"
           id="sel1"
@@ -41,10 +41,12 @@
       <div class="table-responsive">
         <div>
           <h5 style="text-align: center">Account Details</h5>
+
           <button
             class="tn btn-primary btn-sm"
             type="button"
             style="margin-left: 80%; margin-bottom: 0.5%"
+            (click)="download()"
           >
             Download
           </button>

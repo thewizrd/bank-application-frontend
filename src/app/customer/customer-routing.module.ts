@@ -25,6 +25,10 @@ const routes: Routes = [
     component: RegisterComponent,
   },
   {
+    path: 'customer/dashboard',
+    component: DashboardComponent,
+  },
+  {
     path: 'customer/updateProfile',
     component: UpdateProfileComponent,
   },

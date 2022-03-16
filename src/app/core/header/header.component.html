@@ -9,7 +9,13 @@
       <svg class="bi me-2" width="40" height="32">
         <use xlink:href="#bootstrap" />
       </svg>
-      <span class="material-icons-outlined mt-1"> account_balance </span>
+      <img
+        height="32"
+        width="32"
+        class="me-1"
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAACeklEQVR4nO2aMUgcQRRAn6cRRQlBCSikUrCIXWwDNmkPbGwtU9hY2gZs0qa0sbC0sEmZIgENNimSQgikSRUIiBIEw4maFDO7tzu3u+7drvy5nf9gOG5258//f/7/O3c7oCgSLAE7wA/bdmxfo3kCbAAfgDvgX0b7AmwBT4V0rJ1xYA04BDp0Df0D7AGrtu3Zvuh6x45ZszKGjmXgLfCbrlG3mNXfAKYzxkwAbeAAuE6MOwd2gZfAyEMrXoVnmPD9SjqsT4FtYL4PWbPAa+DYkfUdeAMs1KZ1RSaBdeA9cENX0V/AO2ClhjmWMUb/JB1NxxgnPa5hjr5oYcJxF7hMKPUXE75t4JHQvGMPMG/Mc/xZifsi70VdE81QnIuLdU1Ugaj2fCO79sz1KzCvGl/gfzW+7+kzVTR4BRM+Z4nBHUyYrTNcz+NR4BWwD1yR3n/s22upRfxEOnxOgE1MCgw7MxhbTkjb+DF5U9TZ9D159Bsksjemp6PhxPa6z82QnACYzQWYx1xoHGV1Nj0Veuxr5dwYDHl75yZHQQo3AkKoBZm5n0W/9aDofl9laQ0o8/u5znrgnayiCBikHuTll6+ySpOXR4PsG7ySFXwNUAdIKyCNOkBaAWnUAdIKSKMOkFZAGnWAtALSqAOkFZBGHSCtgDTqAGkFpFEHSCsgjTpAWgFpihzwmd5/V93DzW5/3t/PvsoqPO016IuHLJm+yir1ZqjskbgyinknS2uA871MfuW1ovt9kpWqB24YhXIwIrY7rwb4ehS2Kj0LrDXAfka5H1E2v4atJe07gm6oh5L7LiNuDWhq7rvECx58DdCzwvYzhPOBLpXPDSlN4D8qeT6N7ta4pQAAAABJRU5ErkJggg=="
+        alt=""
+      />
       <span class="ms-1 fs-4">T3 Bank</span>
     </a>
 
@@ -25,25 +31,23 @@
       <li *ngIf="!loggedIn" class="nav-item">
         <a href="#" routerLink="/staff/login" class="nav-link">Staff Corner</a>
       </li>
+      <li *ngIf="loggedIn && isCustomer" class="nav-item">
+        <a href="#" routerLink="/customer/updateProfile" class="nav-link"
+          >Profile</a
+        >
+      </li>
       <li *ngIf="loggedIn && username" class="nav-item">
-        <a class="nav-link">
-          <div style="display: flex">
-            <span
-              *ngIf="isAdmin"
-              class="material-icons-outlined"
-              style="margin-right: 4px"
-            >
-              admin_panel_settings
-            </span>
-            <span
-              *ngIf="isStaff"
-              class="material-icons-outlined"
-              style="margin-right: 4px"
-            >
-              badge
-            </span>
-            <p>Welcome {{ username }}</p>
-          </div>
+        <a class="nav-link d-flex">
+          <span *ngIf="isCustomer" class="material-icons-outlined me-1">
+            person
+          </span>
+          <span *ngIf="isAdmin" class="material-icons-outlined me-1">
+            admin_panel_settings
+          </span>
+          <span *ngIf="isStaff" class="material-icons-outlined me-1">
+            badge
+          </span>
+          <span>{{ username }}</span>
         </a>
       </li>
       <li *ngIf="loggedIn" class="nav-item">

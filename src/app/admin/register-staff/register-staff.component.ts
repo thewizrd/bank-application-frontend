@@ -29,6 +29,9 @@ export class RegisterStaffComponent implements OnInit {
           alert('Staff added successfully');
           this._router.navigate(['/admin/dashboard']);
         },
+        error: (err) => {
+          this.errorMsg = err.message;
+        },
       });
     }
   }

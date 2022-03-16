@@ -5,19 +5,42 @@
     ></customer-navbar>
 
     <main class="col">
-      <!-- <div class="input-group">
-        <select class="form-control" id="sel1">
-          <option selected="true" disabled="disabled">
-            Please Click To Select Account
-          </option>
-          <option *ngFor="let account of accounts">
-            {{ account.accountNumber }}
-          </option>
-        </select>
-      </div> -->
+      <div class="dropdown">
+        <button
+          class="btn btn-body border-dark dropdown-toggle"
+          type="button"
+          id="accountDropdown"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <span *ngIf="!accountNum"> Please select an account </span>
+          <span *ngIf="accountNum && accountDetails">
+            {{ accountNum }} - {{ accountDetails.accountType }}
+          </span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="accountDropdown">
+          <li *ngFor="let account of accounts">
+            <button
+              class="dropdown-item"
+              (click)="loadAccountInfo(account.accountNumber)"
+            >
+              {{ account.accountNumber }} - {{ account.accountType }}
+            </button>
+          </li>
+        </ul>
+      </div>
+      <br />
       <div>
-        <p>Account No. {{ accountDetails.accountNumber }}</p>
-        <p>Balance: {{ accountDetails.accountBalance }}</p>
+        <p>
+          Account No.:
+          <span *ngIf="accountDetails">{{ accountDetails.accountNumber }}</span>
+        </p>
+        <p>
+          Balance:
+          <span *ngIf="accountDetails">{{
+            accountDetails.accountBalance
+          }}</span>
+        </p>
       </div>
 
       <div class="table-responsive">

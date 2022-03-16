@@ -46,6 +46,7 @@ export class CreateAccountComponent implements OnInit {
   }
 
   gotoList() {
-    this.router.navigate(['customer/dashboard']);
+    // Forces a reload
+    location.href = '/customer/dashboard';
   }
 }

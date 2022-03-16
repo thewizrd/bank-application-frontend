@@ -7,62 +7,41 @@
       <div class="position-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
-<<<<<<< HEAD
             <a
               class="nav-link active"
               aria-current="page"
               href="customer/dashboard"
             >
-=======
-            <a class="nav-link active" aria-current="page" href="#">
->>>>>>> 2824daa21e7498a7f64ab93358c682d152c30b45
               <span data-feather="home"></span>
               Dashboard
             </a>
           </li>
           <li class="nav-item">
-<<<<<<< HEAD
-            <a class="nav-link" href="customer/dashboard/createAccount">
+            <a class="nav-link" href="customer/createAccount">
               Create Account
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="customer/dashboard/addBeneficiary">
+            <a class="nav-link" href="customer/addBeneficiary">
               Add Beneficiary
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="customer/dashboard/removeBeneficiary">
+            <a class="nav-link" href="customer/removeBeneficiary">
               Remove Beneficiary
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="customer/dashboard/accountDetails">
+            <a class="nav-link" href="customer/accountDetails">
               Account Details
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#"> Transfer </a>
-=======
-            <a class="nav-link" href="#"> Create Account </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"> Add Beneficiary </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"> Remove Beneficiary </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"> Account Details </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"> Integrations </a>
->>>>>>> 2824daa21e7498a7f64ab93358c682d152c30b45
           </li>
         </ul>
       </div>
     </nav>
-<<<<<<< HEAD
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div
@@ -71,15 +50,11 @@
       <!-- account  -->
       <div class="card-columns">
         <div class="card shadow rounded" *ngFor="let account of accounts">
-          <!-- <div class="card shadow rounded"> -->
           <div class="alignright p-3">
-            <p>{{ account.accountType }}</p>
-            <p>{{ account.accountBalance }}</p>
-            <p>{{ account.accountStatus }}</p>
-            <!-- <p>accountType</p>
-            <p>accountBalance</p>
-            <p>accountStatus</p> -->
-            <div class="form-check form-switch">
+            <p>Account Type: {{ account.accountType }}</p>
+            <p>Account Balance: {{ account.accountBalance }}</p>
+            <p>Account Status: {{ account.accountStatus }}</p>
+            <!-- <div class="form-check form-switch">
               <input
                 class="form-check-input"
                 type="checkbox"
@@ -88,8 +63,12 @@
               <label class="form-check-label" for="accountStatus"
                 >Enable/Disbale</label
               >
-            </div>
-            <button type="button" class="btn btn-primary btn-sm">
+            </div> -->
+            <button
+              type="submit"
+              class="btn btn-primary btn-sm"
+              (click)="goDetails(account.accountNumber)"
+            >
               View More
             </button>
           </div>
@@ -97,37 +76,4 @@
       </div>
     </main>
   </div>
-=======
-  </div>
-
-  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-    <div
-      class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
-    ></div>
-
-    <!-- account  -->
-    <div class="card-columns">
-      <div class="card shadow rounded">
-        <div class="alignright p-3">
-          <p>account.accountType</p>
-          <p>account.accountBalance</p>
-          <p>account.accountBalance</p>
-          <div class="form-check form-switch">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="accountStatus"
-            />
-            <label class="form-check-label" for="accountStatus"
-              >Enable/Disbale</label
-            >
-          </div>
-          <button type="button" class="btn btn-primary btn-sm">
-            View More
-          </button>
-        </div>
-      </div>
-    </div>
-  </main>
->>>>>>> 2824daa21e7498a7f64ab93358c682d152c30b45
 </div>

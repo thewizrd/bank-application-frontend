@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AccountType } from 'src/app/enums/account-type';
 import { CreateAccountRequest } from 'src/app/models/create-account-request';
+import { CustomerService } from 'src/app/services/customer.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-create-account',
@@ -7,17 +11,41 @@ import { CreateAccountRequest } from 'src/app/models/create-account-request';
   styleUrls: ['./create-account.component.css'],
 })
 export class CreateAccountComponent implements OnInit {
+  customerId: any;
   account: CreateAccountRequest = new CreateAccountRequest();
   submitted = false;
 
-  constructor() {}
+  constructor(
+    private customerService: CustomerService,
+    private router: Router,
+    private _tokenService: TokenStorageService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const jwtToken = this._tokenService.getTokenResponse();
+    this.customerId = jwtToken?.id;
+  }
 
   newAccount(): void {
     this.submitted = false;
     this.account = new CreateAccountRequest();
   }
+  onSubmit() {
+    this.submitted = true;
+    this.create();
+  }
+  create() {
+    this.customerService.createAccount(this.customerId, this.account).subscribe(
+      (data) => console.log(data),
+      (error) => console.log(error)
+    );
+    this.gotoList();
+  }
+  public get accountType(): typeof AccountType {
+    return AccountType;
+  }
 
-  save() {}
+  gotoList() {
+    this.router.navigate(['customer/dashboard']);
+  }
 }

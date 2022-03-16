@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AllAccountsResponse } from 'src/app/interfaces/all-accounts-response';
 import { CustomerService } from 'src/app/services/customer.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,11 +11,13 @@ import { CustomerService } from 'src/app/services/customer.service';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  accounts: Observable<AllAccountsResponse[]>;
+  customerId: any;
+  accounts: AllAccountsResponse[] = [];
 
   constructor(
     private router: Router,
-    private customerService: CustomerService
+    private customerService: CustomerService,
+    private _tokenService: TokenStorageService
   ) {}
 
   ngOnInit() {
@@ -22,10 +25,16 @@ export class DashboardComponent implements OnInit {
   }
 
   reloadData() {
-    getallAccounts(customerId: number);
+    const jwtToken = this._tokenService.getTokenResponse();
+    this.customerId = jwtToken?.id;
+    this.customerService
+      .getCustomerAccounts(this.customerId)
+      .subscribe((accounts) => {
+        this.accounts = accounts;
+      });
   }
-
-  getallAccounts(customerId: number) {
-    this.accounts= this.customerService.getAllAccounts(customerId).subscribe()
+  goDetails(accountNum: number) {
+    console.log(accountNum);
+    location.href = 'customer/accountDetails?id=' + accountNum;
   }
 }

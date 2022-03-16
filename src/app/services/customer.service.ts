@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-=======
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, tap, throwError } from 'rxjs';
@@ -26,69 +21,11 @@ import { SignInRequest } from '../models/sign-in-request';
 import { TransferRequest } from '../models/transfer-request';
 import { UpdateCustomerRequest } from '../models/update-customer-request';
 import { AuthService } from './auth.service';
->>>>>>> 2824daa21e7498a7f64ab93358c682d152c30b45
 
 @Injectable({
   providedIn: 'root',
 })
 export class CustomerService {
-<<<<<<< HEAD
-  private baseUrl = 'http://localhost:9091/api/customer';
-  constructor(private _http: HttpClient) {}
-
-  //create account by customer
-  //??how to get response
-  createAccount(customerId: number, accountRequest: object): Observable<any> {
-    return this._http.post(
-      `${this.baseUrl}+"/"+${customerId}+"/account"`,
-      accountRequest
-    );
-  }
-  //get all acounts by customer
-  getAllAccounts(customerId: number): Observable<any> {
-    return this._http.get(`${this.baseUrl}+"/"+${customerId}+"/account"`);
-  }
-  //Add beneficiary
-  addBeneficiary(
-    customerId: number,
-    beneficiaryRequest: object
-  ): Observable<any> {
-    return this._http.post(
-      `${this.baseUrl}+"/"+${customerId}+"/beneficiary"`,
-      beneficiaryRequest
-    );
-  }
-  //Remove beneficiary
-  removeBeneficiary(
-    customerId: number,
-    beneficiaryId: number
-  ): Observable<any> {
-    return this._http.delete(
-      `${this.baseUrl}+"/"+${customerId}+"/beneficiary/"+${beneficiaryId}`,
-      {
-        responseType: `json`,
-      }
-    );
-  }
-
-  //specified account details,include transaction details
-  getAlltransactions(customerId: number, accountId: number): Observable<any> {
-    return this._http.get(
-      `${this.baseUrl}+"/"+${customerId}+"/account/"+${accountId}`
-    );
-  }
-
-  //update password
-  updatePassword(username: string, value: any): Observable<any> {
-    return this._http.put(`${this.baseUrl}+${username}+"/forgot"`, value);
-  }
-
-  //Forgot Password, get security question and answer
-  getSecurityQuestion(username: string): Observable<any> {
-    return this._http.get(
-      `${this.baseUrl}+${username}+"/forgot/question/answer"`
-    );
-=======
   private baseUrl = 'http://localhost:9010/api/customer/';
 
   constructor(
@@ -237,6 +174,14 @@ export class CustomerService {
     }
     // return an observable with a user-facing error message
     return throwError(() => new Error(error.error.message));
->>>>>>> 2824daa21e7498a7f64ab93358c682d152c30b45
+  }
+
+  //create account by customer
+  //??how to get response
+  createAccount(customerId: number, accountRequest: object): Observable<any> {
+    return this._httpClient.post(
+      `${this.baseUrl}${customerId}/account`,
+      accountRequest
+    );
   }
 }

@@ -11,6 +11,7 @@
             id="fromAccNumber"
             name="fromAccNumber"
             min="1"
+            [ngModel]="fromAccNumber"
           />
         </td>
       </tr>
@@ -23,6 +24,7 @@
             id="toAccNumber"
             name="toAccNumber"
             min="1"
+            [(ngModel)]="toAccNumber"
           />
         </td>
       </tr>
@@ -37,13 +39,20 @@
             min="0.01"
             step=".01"
             placeholder="0.00"
+            [(ngModel)]="amount"
           />
         </td>
       </tr>
       <tr>
         <td>
           <label for="floatingInputValue">Reason For Transfer</label>
-          <input type="text" class="form-control" id="reason" name="reason" />
+          <input
+            type="text"
+            class="form-control"
+            id="reason"
+            name="reason"
+            [(ngModel)]="reason"
+          />
         </td>
       </tr>
       <tr>

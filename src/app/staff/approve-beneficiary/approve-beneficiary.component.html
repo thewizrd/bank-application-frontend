@@ -1,50 +1,44 @@
 <div class="container">
   <staff-dashboard></staff-dashboard>
-  <h3 class="text-center">Approve Beneficiary</h3>
-  <br />
-  <form class="register-form mx-auto">
-    <div class="row">
-      <div class="col">
-        <label for="accountNumber">Beneficiary Account Number</label>
-        <input
-          type="number"
-          class="form-control"
-          id="beneAccountNumber"
-          name="beneAccountNumber"
-          placeholder="Beneficiary Account Number"
-        />
-      </div>
-      <div class="col">
-        <label for="customerId">Customer ID</label>
-        <input
-          type="number"
-          class="form-control"
-          id="customerId"
-          name="customerId"
-          placeholder="Customer ID"
-          min="1"
-        />
-      </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title text-center border-bottom pb-3 mb-3">
+        Nonapproved Accounts
+      </h5>
+      <table class="table table-striped table-hover table-bordered text-center">
+        <thead>
+          <tr>
+            <th>Customer ID</th>
+            <th>Beneficiary Account Number</th>
+            <th>Date Created</th>
+            <th>Approval Status</th>
+          </tr>
+        </thead>
+        <tbody class="align-middle" *ngFor="let beneficiary of beneficiaries">
+          <tr>
+            <td>{{ beneficiary.fromCustomer }}</td>
+            <td>{{ beneficiary.beneficiaryAccountNumber }}</td>
+            <td>{{ beneficiary.dateAdded }}</td>
+            <td *ngIf="beneficiary.isApproved == 'yes'">
+              <button type="button" class="btn btn-success">Approved</button>
+            </td>
+            <td *ngIf="beneficiary.isApproved == 'no'">
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="
+                  setApprovedStatus(
+                    beneficiary.fromCustomer,
+                    beneficiary.beneficiaryAccountNumber
+                  )
+                "
+              >
+                Not Approved
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <br />
-    <div class="row row-cols-2">
-      <div class="col">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          role="switch"
-          id="beneficiaryIsApproved"
-          name="beneficiaryIsApproved"
-          checked
-        />
-        <label class="form-check-label" for="beneficiaryIsApproved"
-          >Approve Beneficiary</label
-        >
-      </div>
-    </div>
-    <br />
-    <div class="float-end d-grid gap-2 col-2 mx-auto">
-      <button class="btn btn-primary" type="submit">Submit</button>
-    </div>
-  </form>
+  </div>
 </div>

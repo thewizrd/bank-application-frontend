@@ -37,6 +37,9 @@ export class TransferComponent implements OnInit {
         next: (result) => {
           alert('Transfer Successful');
         },
+        error: (err) => {
+          console.log(err.message);
+        },
       });
     }
   }

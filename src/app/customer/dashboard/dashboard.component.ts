@@ -42,6 +42,7 @@ export class DashboardComponent implements OnInit {
         }
       });
   }
+
   goDetails(accountNum: number) {
     console.log(accountNum);
     location.href = 'customer/accountDetails?id=' + accountNum;

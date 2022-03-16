@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { ApproveAccountComponent } from './approve-account/approve-account.component';
 import { ApproveBeneficiaryComponent } from './approve-beneficiary/approve-beneficiary.component';
 import { CustomerAccountsComponent } from './customer-accounts/customer-accounts.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { EnableDisableCustomerComponent } from './enable-disable-customer/enable-disable-customer.component';
 import { LoginComponent } from './login/login.component';
 import { TransferComponent } from './transfer/transfer.component';
@@ -27,7 +26,7 @@ const routes: Routes = [
   },
   {
     path: 'staff/dashboard',
-    component: DashboardComponent,
+    component: CustomerAccountsComponent,
   },
   {
     path: 'staff/enable-disable-customer',

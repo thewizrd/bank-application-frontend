@@ -27,20 +27,9 @@ export class AccountDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.router.queryParams.subscribe((data) => {
-      this.accountNum = data;
+      this.accountNum = data['id'];
     });
-    this.customerService
-      .getCustomerAccountByID(this.customerId, this.accountNum)
-      .subscribe((data) => {
-        console.log(data);
-        this.accountDetails = data;
-        this.transaction = data.transaction;
-      });
-
-    this.reloadData();
-  }
-
-  reloadData() {
+    console.log('accountNUm' + this.accountNum);
     const jwtToken = this._tokenService.getTokenResponse();
     this.customerId = jwtToken?.id;
 
@@ -48,6 +37,13 @@ export class AccountDetailsComponent implements OnInit {
       .getCustomerAccounts(this.customerId)
       .subscribe((accounts) => {
         this.accounts = accounts;
+      });
+    this.customerService
+      .getCustomerAccountByID(this.customerId, this.accountNum)
+      .subscribe((data) => {
+        console.log(data);
+        this.accountDetails = data;
+        this.transaction = data.transaction;
       });
   }
 }

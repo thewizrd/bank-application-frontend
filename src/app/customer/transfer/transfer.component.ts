@@ -22,25 +22,29 @@ export class TransferComponent implements OnInit {
   ngOnInit(): void {}
 
   initiateTransfer(): void {
-    const request = new TransferRequest();
-    const token = this._tokenStorageService.getTokenResponse();
-    if (token === null) {
-      console.log('Unable to verify customer.');
+    if (this.fromAccNumber === this.toAccNumber) {
+      alert('You cannot transfer funds to the same account.');
     } else {
       console.log('initiating transfer');
-      request.by = token.id;
-      request.fromAccNumber = this.fromAccNumber;
-      request.reason = this.reason;
-      request.toAccNumber = this.toAccNumber;
-      request.amount = this.amount;
-      this._customerService.doTransfer(request).subscribe({
-        next: (result) => {
-          alert('Transfer Successful');
-        },
-        error: (err) => {
-          console.log(err.message);
-        },
-      });
+      const request = new TransferRequest();
+      const token = this._tokenStorageService.getTokenResponse();
+      if (token === null) {
+        console.log('Unable to verify staff member.');
+      } else {
+        request.amount = this.amount;
+        request.by = token.id;
+        request.fromAccNumber = this.fromAccNumber;
+        request.reason = this.reason;
+        request.toAccNumber = this.toAccNumber;
+        this._customerService.doTransfer(request).subscribe({
+          next: (result) => {
+            alert('Transfer Successful');
+          },
+          error: (err) => {
+            alert(err.message);
+          },
+        });
+      }
     }
   }
 }

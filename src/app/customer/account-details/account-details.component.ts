@@ -19,6 +19,8 @@ export class AccountDetailsComponent implements OnInit {
   transaction: TransactionsResponse[] = [];
   accounts: AllAccountsResponse[] = [];
   accountNum: any;
+  accountLength: number = 0;
+
   constructor(
     private customerService: CustomerService,
     public router: ActivatedRoute,
@@ -33,6 +35,15 @@ export class AccountDetailsComponent implements OnInit {
     const jwtToken = this._tokenService.getTokenResponse();
     this.customerId = jwtToken?.id;
 
+    this.getTransactions();
+  }
+  changeAccountNumber(value: any) {
+    console.log('accounNum: ' + value);
+    this.accountNum = value;
+    this.getTransactions();
+  }
+
+  getTransactions() {
     this.customerService
       .getCustomerAccounts(this.customerId)
       .subscribe((accounts) => {

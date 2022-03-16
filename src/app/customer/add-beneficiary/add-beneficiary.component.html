@@ -7,25 +7,33 @@
       <div class="position-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">
+            <a class="nav-link" aria-current="page" href="customer/dashboard">
               <span data-feather="home"></span>
               Dashboard
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"> Create Account </a>
+            <a class="nav-link" href="customer/createAccount">
+              Create Account
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"> Add Beneficiary </a>
+            <a class="nav-link active" href="customer/addBeneficiary">
+              Add Beneficiary
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"> Remove Beneficiary </a>
+            <a class="nav-link" href="customer/removeBeneficiary">
+              Remove Beneficiary
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"> Account Details </a>
+            <a class="nav-link" href="customer/accountDetails">
+              Account Details
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"> Integrations </a>
+            <a class="nav-link" href="#"> Transfer </a>
           </li>
         </ul>
       </div>
@@ -37,7 +45,7 @@
       ></div>
 
       <!-- account  -->
-      <form id="add-beneficiary-form">
+      <form id="add-beneficiary-form" (ngSubmit)="onSubmit()">
         <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px">
           Add Beneficiary
         </h3>
@@ -49,9 +57,11 @@
             class="form-control form-control-lg"
             placeholder="Enter Account Number"
             name="accountNumber"
+            required
           />
           <label class="form-label" for="accountNumber">Account Number</label>
         </div>
+
         <div class="form-outline mb-4">
           <input
             type="text"
@@ -59,14 +69,17 @@
             class="form-control form-control-lg"
             placeholder="Comfirm Account Number"
             name="accountNumber"
+            required
           />
           <label class="form-label" for="comfirmAccount"
             >Comfirm Account Number</label
           >
         </div>
+
         <h5 class="fw-normal mb-2 pb-2" style="letter-spacing: 1px">
           Select Type Of Account
         </h5>
+
         <div style="border: 1px solid; padding: 5px">
           <div class="form-check">
             <input
@@ -74,19 +87,22 @@
               type="radio"
               name="accountType"
               id="savingAccount"
-              value="option1"
+              [value]="accountType.SAVINGS"
+              [(ngModel)]="account.accountType"
             />
             <label class="form-check-label" for="savingAccount"
               >Savings Account</label
             >
           </div>
+
           <div class="form-check">
             <input
               class="form-check-input"
               type="radio"
               name="accountType"
               id="checkingAccount"
-              value="option2"
+              [value]="accountType.CHECKING"
+              [(ngModel)]="account.accountType"
             />
             <label class="form-check-label" for="checkingAccount">
               Checking Account</label
@@ -95,7 +111,7 @@
         </div>
 
         <div class="pt-3 mb-4" style="padding-left: 80%">
-          <button class="btn btn-primary btn-lg btn-block" type="button">
+          <button class="btn btn-primary btn-lg btn-block" type="submit">
             Submit
           </button>
         </div>

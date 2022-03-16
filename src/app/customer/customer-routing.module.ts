@@ -7,10 +7,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { LoginComponent } from './login/login.component';
 import { MismatchedComponent } from './mismatched/mismatched.component';
+
 import { RegisterComponent } from './register/register.component';
 import { RemoveBeneficiaryComponent } from './remove-beneficiary/remove-beneficiary.component';
 import { TransferComponent } from './transfer/transfer.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
+
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 const routes: Routes = [
@@ -61,6 +63,10 @@ const routes: Routes = [
   {
     path: 'customer/mismatched',
     component: MismatchedComponent,
+  },
+  {
+    path: 'customer/dashboard',
+    component: DashboardComponent,
   },
 ];
 

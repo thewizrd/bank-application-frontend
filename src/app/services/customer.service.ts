@@ -175,4 +175,13 @@ export class CustomerService {
     // return an observable with a user-facing error message
     return throwError(() => new Error(error.error.message));
   }
+
+  //create account by customer
+  //??how to get response
+  createAccount(customerId: number, accountRequest: object): Observable<any> {
+    return this._httpClient.post(
+      `${this.baseUrl}${customerId}/account`,
+      accountRequest
+    );
+  }
 }

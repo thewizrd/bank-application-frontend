@@ -48,6 +48,10 @@ export class AccountDetailsComponent implements OnInit {
       .getCustomerAccounts(this.customerId)
       .subscribe((accounts) => {
         this.accounts = accounts;
+
+        if (!this.accountDetails.accountNumber && accounts.length > 0) {
+          this.changeAccountNumber(accounts[0].accountNumber);
+        }
       });
     this.customerService
       .getCustomerAccountByID(this.customerId, this.accountNum)

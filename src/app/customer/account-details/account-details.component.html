@@ -1,54 +1,46 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
-    <nav
-      id="sidebarMenu"
-      class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
-    >
-      <div class="position-sticky pt-3">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">
-              <span data-feather="home"></span>
-              Dashboard
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"> Create Account </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"> Add Beneficiary </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"> Remove Beneficiary </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"> Account Details </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"> Integrations </a>
+    <customer-navbar
+      class="nav flex-column d-flex col-md-auto me-4"
+    ></customer-navbar>
+
+    <main class="col">
+      <div class="dropdown">
+        <button
+          class="btn btn-body border-dark dropdown-toggle"
+          type="button"
+          id="accountDropdown"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <span *ngIf="!accountNum"> Please select an account </span>
+          <span *ngIf="accountNum && accountDetails">
+            {{ accountNum }} - {{ accountDetails.accountType }}
+          </span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="accountDropdown">
+          <li *ngFor="let account of accounts">
+            <button
+              class="dropdown-item"
+              (click)="loadAccountInfo(account.accountNumber)"
+            >
+              {{ account.accountNumber }} - {{ account.accountType }}
+            </button>
           </li>
         </ul>
       </div>
-    </nav>
-
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <div
-        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
-      ></div>
-
-      <div class="input-group">
-        <select class="form-control" id="sel1">
-          <option selected="true" disabled="disabled">
-            Please Click To Select Account
-          </option>
-          <option>Which is your favorite movie?</option>
-          <option>What is your pet's name?</option>
-          <option>What is the name of your village?</option>
-        </select>
-      </div>
+      <br />
       <div>
-        <p>Account No.</p>
-        <p>Balance</p>
+        <p>
+          Account No.:
+          <span *ngIf="accountDetails">{{ accountDetails.accountNumber }}</span>
+        </p>
+        <p>
+          Balance:
+          <span *ngIf="accountDetails">{{
+            accountDetails.accountBalance
+          }}</span>
+        </p>
       </div>
 
       <div class="table-responsive">
@@ -74,12 +66,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1,015</td>
-              <td>random</td>
-              <td>tabular</td>
-              <td>information</td>
-              <td>text</td>
+            <tr *ngFor="let trans of transaction">
+              <td>{{ trans.date }}</td>
+              <td>{{ trans.reference }}</td>
+              <td>{{ trans.amount }}</td>
+              <td>{{ trans.transactionType }}</td>
             </tr>
           </tbody>
         </table>

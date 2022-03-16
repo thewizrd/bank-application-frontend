@@ -13,9 +13,10 @@ import { RemoveBeneficiaryComponent } from './remove-beneficiary/remove-benefici
 import { TransferComponent } from './transfer/transfer.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
-import { MismatchedComponent } from './mismatched/mismatched.component';
 
 import { FormsModule } from '@angular/forms';
+import { MismatchedComponent } from './mismatched/mismatched.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { FormsModule } from '@angular/forms';
     TransferComponent,
     UpdateProfileComponent,
     AccountDetailsComponent,
-    MismatchedComponent
+    MismatchedComponent,
+    NavbarComponent,
   ],
   imports: [CommonModule, FormsModule, CustomerRoutingModule],
 })

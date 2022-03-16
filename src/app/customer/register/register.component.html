@@ -1,4 +1,10 @@
 <div class="container">
+  <div *ngIf="errorMsg" class="alert alert-danger" role="alert">
+    {{ errorMsg }}
+  </div>
+  <div *ngIf="message" class="alert alert-primary" role="alert">
+    {{ message }}
+  </div>
   <h3 class="text-center">Customer Registration</h3>
   <br />
   <form class="register-form mx-auto">
@@ -11,6 +17,7 @@
           id="firstName"
           name="firstName"
           placeholder="First Name"
+          [(ngModel)]="registerForm.firstName"
         />
       </div>
       <div class="col">
@@ -21,6 +28,7 @@
           id="lastName"
           name="lastName"
           placeholder="Last Name"
+          [(ngModel)]="registerForm.lastName"
         />
       </div>
     </div>
@@ -34,6 +42,7 @@
           id="username"
           name="username"
           placeholder="Username"
+          [(ngModel)]="registerForm.username"
         />
       </div>
     </div>
@@ -42,21 +51,23 @@
       <div class="col">
         <label for="password">Password</label>
         <input
-          type="text"
+          type="password"
           class="form-control"
           id="password"
           name="password"
           placeholder="Password"
+          [(ngModel)]="registerForm.password"
         />
       </div>
       <div class="col">
         <label for="confirmPassword">Confirm Password</label>
         <input
-          type="text"
+          type="password"
           class="form-control"
           id="confirmPassword"
           name="confirmPassword"
           placeholder="Confirm Password"
+          [(ngModel)]="confirmPassword"
         />
       </div>
     </div>
@@ -70,6 +81,7 @@
           id="secretQuestion"
           name="secretQuestion"
           placeholder="Secret Question"
+          [(ngModel)]="registerForm.secretQuestion"
         />
       </div>
       <div class="col">
@@ -80,6 +92,7 @@
           id="secretAnswer"
           name="secretAnswer"
           placeholder="Secret Answer"
+          [(ngModel)]="registerForm.secretAnswer"
         />
       </div>
     </div>
@@ -93,6 +106,7 @@
           id="phone"
           name="phone"
           placeholder="xxx-xxx-xxxx"
+          [(ngModel)]="registerForm.phone"
         />
       </div>
     </div>
@@ -106,6 +120,7 @@
           id="pan"
           name="pan"
           placeholder="PAN"
+          [(ngModel)]="registerForm.pan"
         />
       </div>
       <div class="col">
@@ -116,12 +131,19 @@
           id="aadhar"
           name="aadhar"
           placeholder="AADHAR"
+          [(ngModel)]="registerForm.aadhar"
         />
       </div>
     </div>
     <br />
     <div class="float-end d-grid gap-2 col-2 mx-auto">
-      <button class="btn btn-primary" type="submit">Register</button>
+      <button
+        class="btn btn-primary"
+        type="submit"
+        (click)="registerCustomer()"
+      >
+        Register
+      </button>
     </div>
   </form>
 </div>

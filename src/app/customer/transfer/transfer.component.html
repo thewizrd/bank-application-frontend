@@ -76,6 +76,35 @@
           </div>
         </div>
         <br />
+        <div style="border: 1px solid; padding: 5px">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="transactionType"
+              id="transactionTypeDebit"
+              value="DEBIT"
+              [(ngModel)]="request.transactionType"
+            />
+            <label class="form-check-label" for="transactionTypeDebit"
+              >Debit</label
+            >
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="transactionType"
+              id="transactionTypeCredit"
+              value="CREDIT"
+              [(ngModel)]="request.transactionType"
+            />
+            <label class="form-check-label" for="transactionTypeCredit">
+              Credit</label
+            >
+          </div>
+        </div>
+        <br />
         <div class="form-floating">
           <textarea
             class="form-control"

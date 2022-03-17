@@ -6,74 +6,96 @@
 
     <!-- customer dashboard -->
     <main class="col">
+      <div *ngIf="errorMsg" class="alert alert-danger" role="alert">
+        {{ errorMsg }}
+      </div>
       <h3 class="text-center">Account Transfer</h3>
-      <form>
-        <table>
-          <tr>
-            <td>
-              <label for="floatingInputValue">From Account Number</label>
-              <input
-                type="number"
-                class="form-control"
-                id="fromAccNumber"
-                name="fromAccNumber"
-                min="1"
-                [ngModel]="fromAccNumber"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="floatingInputValue">To Account Number</label>
-              <input
-                type="number"
-                class="form-control"
-                id="toAccNumber"
-                name="toAccNumber"
-                min="1"
-                [(ngModel)]="toAccNumber"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="floatingInputValue">Amount To Transfer</label>
-              <input
-                type="number"
-                class="form-control"
-                id="amount"
-                name="amount"
-                min="0.01"
-                step=".01"
-                placeholder="0.00"
-                [(ngModel)]="amount"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="floatingInputValue">Reason For Transfer</label>
-              <input
-                type="text"
-                class="form-control"
-                id="reason"
-                name="reason"
-                [(ngModel)]="reason"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button
-                class="w-100 btn btn-lg btn-primary"
-                type="submit"
-                (click)="initiateTransfer()"
-              >
-                Transfer
-              </button>
-            </td>
-          </tr>
+      <br />
+      <h6 class="text-center" for="sourceAccountTbl">Select Source Account</h6>
+      <form id="sourceAccountTbl">
+        <table
+          class="table table-sm table-striped table-hover table-bordered text-center w-auto me-auto ms-auto"
+        >
+          <thead>
+            <tr>
+              <td class="fw-bold px-3">Acc No</td>
+              <td class="fw-bold px-3">Balance</td>
+              <td class="fw-bold px-3">Account Type</td>
+              <td class="fw-bold px-3">Select</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let account of accounts">
+              <td>{{ account.accountNumber }}</td>
+              <td>{{ account.accountBalance }}</td>
+              <td>{{ account.accountType }}</td>
+              <td class="text-center">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="fromAccNumber"
+                  id="fromAccNumber"
+                  [value]="account.accountNumber"
+                  [(ngModel)]="request.fromAccNumber"
+                />
+              </td>
+            </tr>
+          </tbody>
         </table>
+        <br />
+        <div class="row">
+          <div class="col me-auto ms-auto">
+            <label for="toAccount" class="form-label">Select to account</label>
+            <select
+              id="toAccount"
+              name="toAccount"
+              class="form-select"
+              [(ngModel)]="request.toAccNumber"
+            >
+              <option selected disabled [value]="null">Select account</option>
+              <option
+                *ngFor="let ben of beneficiaries"
+                [value]="ben.beneficiaryAccountNo"
+              >
+                Acc No: {{ ben.beneficiaryAccountNo }} -
+                {{ ben.beneficiaryName }}
+              </option>
+            </select>
+          </div>
+          <div class="col me-auto ms-auto">
+            <label for="amount" class="form-label">Amount</label>
+            <input
+              type="number"
+              id="amount"
+              name="amount"
+              class="form-control"
+              placeholder="0.00"
+              min="0"
+              [(ngModel)]="request.amount"
+            />
+          </div>
+        </div>
+        <br />
+        <div class="form-floating">
+          <textarea
+            class="form-control"
+            placeholder="Reason"
+            id="reason"
+            name="reason"
+            [(ngModel)]="request.reason"
+          ></textarea>
+          <label for="reason">Reason</label>
+        </div>
+        <br />
+        <div class="d-grid gap-2 col-2 mx-auto float-end">
+          <button
+            class="btn btn-lg btn-primary w-auto"
+            type="submit"
+            (click)="initiateTransfer()"
+          >
+            Transfer
+          </button>
+        </div>
       </form>
     </main>
   </div>

@@ -13,7 +13,7 @@
           [(ngModel)]="accountDetails.accountNumber"
           (ngModelChange)="changeAccountNumber($event)"
         >
-          <option selected="true" disabled="disabled">
+          <option selected="true" disabled="disabled" [value]="undefined">
             Please Click To Select Account
           </option>
           <option

@@ -34,11 +34,10 @@ export class RemoveBeneficiaryComponent implements OnInit {
         (data) => {
           console.log(data);
           window.alert('delete Beneficiary successfully');
+          this.getBeneficiaries();
         },
         (error) => console.log(error)
       );
-
-    this.getBeneficiaries();
   }
   getBeneficiaries() {
     this.customerService

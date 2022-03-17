@@ -128,9 +128,9 @@ export class CustomerService {
   deleteBeneficiaryFromCustomer(
     customerID: number,
     beneficiaryID: number
-  ): Observable<AddBeneficiaryResponse> {
+  ): Observable<ApiMessage> {
     return this._httpClient
-      .delete<AddBeneficiaryResponse>(
+      .delete<ApiMessage>(
         this.baseUrl + customerID + '/beneficiary/' + beneficiaryID
       )
       .pipe(catchError(this.errorHandler));

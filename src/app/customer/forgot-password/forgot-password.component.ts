@@ -24,7 +24,11 @@ export class ForgotPasswordComponent implements OnInit {
 
   // to check the answer is correct or not
   onSubmit() {
-    if (this.answer != this.correctAnswer) {
+    if (
+      this.answer != this.correctAnswer ||
+      this.correctAnswer == null ||
+      this.correctAnswer == ''
+    ) {
       location.href = 'customer/mismatched';
     } else {
       location.href = 'customer/updatePassword?username=' + this.customerName;
@@ -32,11 +36,15 @@ export class ForgotPasswordComponent implements OnInit {
   }
   getcustomerName(value: any) {
     this.customerName = value;
-    this.customerService
-      .getCustomerSecurityQandA(this.customerName)
-      .subscribe((data) => {
+    this.customerService.getCustomerSecurityQandA(this.customerName).subscribe(
+      (data) => {
         this.question = data.securityQuestion;
         this.correctAnswer = data.securityAnswer;
-      });
+      },
+      (error) => {
+        console.log(error);
+        this.question = '';
+      }
+    );
   }
 }

@@ -177,11 +177,16 @@ export class CustomerService {
   }
 
   //create account by customer
-  //??how to get response
-  createAccount(customerId: number, accountRequest: object): Observable<any> {
-    return this._httpClient.post(
-      `${this.baseUrl}${customerId}/account`,
-      accountRequest
-    );
+
+  createAccount(
+    customerId: number,
+    accountRequest: CreateAccountRequest
+  ): Observable<RegisterCustomerResponse> {
+    return this._httpClient
+      .post<RegisterCustomerResponse>(
+        `${this.baseUrl}${customerId}/account`,
+        accountRequest
+      )
+      .pipe(catchError(this.errorHandler));
   }
 }

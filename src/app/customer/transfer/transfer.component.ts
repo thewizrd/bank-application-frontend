@@ -36,6 +36,7 @@ export class TransferComponent implements OnInit {
         request.fromAccNumber = this.fromAccNumber;
         request.reason = this.reason;
         request.toAccNumber = this.toAccNumber;
+
         this._customerService.doTransfer(request).subscribe({
           next: (result) => {
             alert('Transfer Successful');

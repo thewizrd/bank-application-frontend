@@ -58,10 +58,16 @@ export class AddBeneficiaryComponent implements OnInit {
       this.customerService
         .addBeneficiaryToCustomer(this.customerId, this.account)
         .subscribe(
-          (data) => console.log(data),
-          (error) => console.log(error)
+          (data) => {
+            window.alert('Add beneficiary successfully');
+            this.gotoList();
+            console.log(data);
+          },
+          (error) => {
+            window.alert('Add beneficiary failed');
+            console.log(error);
+          }
         );
-      this.gotoList();
     }
   }
 

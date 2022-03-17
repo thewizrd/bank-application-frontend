@@ -24,7 +24,11 @@ export class ApproveBeneficiaryComponent implements OnInit {
     request.isApproved = 'yes';
     this._staffService.approveBeneficiary(request).subscribe({
       next: (result) => {
+        alert('Beneficiary approved');
         window.location.reload();
+      },
+      error: (err) => {
+        console.log(err);
       },
     });
   }

@@ -22,6 +22,13 @@ export class RegisterStaffComponent implements OnInit {
   registerStaff() {
     if (this.registerForm.password !== this.confirmPassword) {
       this.errorMsg = 'Passwords do not match';
+    } else if (
+      !this.registerForm.username ||
+      !this.registerForm.firstName ||
+      !this.registerForm.lastName ||
+      !this.registerForm.password
+    ) {
+      alert('Invalid request');
     } else {
       this.errorMsg = '';
       this._adminService.createStaff(this.registerForm).subscribe({

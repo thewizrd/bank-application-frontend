@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -14,7 +14,11 @@ export class HeaderComponent implements OnInit {
   isCustomer: boolean = false;
   username: string | null = null;
 
-  constructor(private _router: Router, private _authService: AuthService) {}
+  constructor(
+    private _router: Router,
+    private _authService: AuthService,
+    private ref: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.loggedIn = this._authService.isLoggedIn();
@@ -36,6 +40,8 @@ export class HeaderComponent implements OnInit {
         this.isStaff = jwtToken.roles.includes('ROLE_STAFF');
         this.isCustomer = jwtToken.roles.includes('ROLE_CUSTOMER');
       }
+
+      this.ref.detectChanges();
     });
   }
 

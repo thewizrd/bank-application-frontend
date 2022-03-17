@@ -29,31 +29,37 @@ export class AccountDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.router.queryParams.subscribe((data) => {
-      this.accountNum = data['id'];
-    });
-    console.log('accountNUm' + this.accountNum);
     const jwtToken = this._tokenService.getTokenResponse();
     this.customerId = jwtToken?.id;
 
-    this.getTransactions();
+    this.router.queryParams.subscribe((data) => {
+      this.accountNum = data['id'];
+      console.log('accountNUm' + this.accountNum);
+      this.getTransactions();
+    });
+
+    this.getAccounts();
   }
+
   changeAccountNumber(value: any) {
     console.log('accounNum: ' + value);
     this.accountNum = value;
     this.getTransactions();
   }
 
-  getTransactions() {
+  getAccounts() {
     this.customerService
       .getCustomerAccounts(this.customerId)
       .subscribe((accounts) => {
         this.accounts = accounts;
 
-        if (!this.accountDetails.accountNumber && accounts.length > 0) {
+        if (!this.accountNum && accounts.length > 0) {
           this.changeAccountNumber(accounts[0].accountNumber);
         }
       });
+  }
+
+  getTransactions() {
     this.customerService
       .getCustomerAccountByID(this.customerId, this.accountNum)
       .subscribe((data) => {

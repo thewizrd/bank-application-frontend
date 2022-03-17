@@ -35,11 +35,16 @@ export class UpdatePasswordComponent implements OnInit {
       this.customerService
         .updateForgottenPassword(this.username, this.resetPassword)
         .subscribe(
-          (data) => console.log(data),
-          (error) => console.log(error)
+          (data) => {
+            window.alert('password updated successfully');
+            console.log(data);
+            this._router.navigate(['/customer/login']);
+          },
+          (error) => {
+            window.alert('password updated failed');
+            console.log(error);
+          }
         );
-      window.alert('password updated successfully');
-      this._router.navigate(['/customer/login']);
     }
   }
 }

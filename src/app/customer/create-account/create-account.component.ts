@@ -44,13 +44,18 @@ export class CreateAccountComponent implements OnInit {
       window.alert('initialDeposit must be greater than zero!');
     } else {
       this.customerService
-        .createAccount(this.customerId, this.account)
+        .registerAccount(this.customerId, this.account)
         .subscribe(
-          (data) => console.log(data),
-          (error) => console.log(error)
+          (data) => {
+            window.alert('Create account success!');
+            console.log(data);
+            this.gotoList();
+          },
+          (error) => {
+            window.alert('Create account failed!');
+            console.log(error);
+          }
         );
-      window.alert('Create account success!');
-      this.gotoList();
     }
   }
   public get accountType(): typeof AccountType {

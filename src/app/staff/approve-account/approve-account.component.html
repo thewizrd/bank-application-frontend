@@ -18,7 +18,8 @@
         <tbody class="align-middle" *ngFor="let account of accounts">
           <tr>
             <td>{{ account.accountNumber }}</td>
-            <td>{{ account.accountType }}</td>
+            <td *ngIf="account.accountType == 'CHECKING'">CURRENT</td>
+            <td *ngIf="account.accountType == 'SAVINGS'">SAVINGS</td>
             <td>{{ account.customerName }}</td>
             <td>{{ account.dateCreated }}</td>
             <td *ngIf="account.approved == 'yes'">

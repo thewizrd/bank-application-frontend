@@ -28,7 +28,8 @@
             <tr *ngFor="let account of accounts">
               <td>{{ account.accountNumber }}</td>
               <td>{{ account.accountBalance }}</td>
-              <td>{{ account.accountType }}</td>
+              <td *ngIf="account.accountType == 'CHECKING'">CURRENT</td>
+              <td *ngIf="account.accountType == 'SAVINGS'">SAVINGS</td>
               <td class="text-center">
                 <input
                   class="form-check-input"

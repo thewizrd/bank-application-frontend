@@ -15,6 +15,9 @@ import { AdminModule } from './admin/admin.module';
 import { AdminRoutingModule } from './admin/admin-routing.module';
 import { AuthInterceptor } from './utils/auth-interceptor';
 import { JwtInterceptor } from './utils/jwt-interceptor';
+import { AdminNavGuard } from './guards/admin-nav.guard';
+import { CustomerNavGuard } from './guards/customer-nav.guard';
+import { StaffNavGuard } from './guards/staff-nav.guard';
 
 @NgModule({
   declarations: [AppComponent],
@@ -47,6 +50,9 @@ import { JwtInterceptor } from './utils/jwt-interceptor';
       useClass: JwtInterceptor,
       multi: true,
     },
+    AdminNavGuard,
+    CustomerNavGuard,
+    StaffNavGuard,
   ],
   bootstrap: [AppComponent, CoreModule],
 })

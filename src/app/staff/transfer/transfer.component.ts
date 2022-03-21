@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StaffService } from 'src/app/services/staff.service';
 import { TransferAmountRequest } from 'src/app/models/transfer-amount-request';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { TransactionType } from 'src/app/enums/transaction-type';
 
 @Component({
   selector: 'app-transfer',
@@ -13,6 +14,7 @@ export class TransferComponent implements OnInit {
   fromAccNumber: any;
   toAccNumber: any;
   reason: any;
+  transactionType: any = TransactionType.DEBIT;
 
   constructor(
     private _staffService: StaffService,
@@ -22,7 +24,12 @@ export class TransferComponent implements OnInit {
   ngOnInit(): void {}
 
   initiateTransfer(): void {
-    if (this.fromAccNumber && this.toAccNumber && this.amount) {
+    if (
+      this.fromAccNumber &&
+      this.toAccNumber &&
+      this.amount &&
+      this.transactionType
+    ) {
       if (this.amount <= 0) {
         alert('Amount cannot be zero or less');
       } else if (this.fromAccNumber === this.toAccNumber) {
@@ -38,6 +45,7 @@ export class TransferComponent implements OnInit {
           request.fromAccNumber = this.fromAccNumber;
           request.reason = this.reason;
           request.toAccNumber = this.toAccNumber;
+          request.transactionType = this.transactionType;
           this._staffService.doTransfer(request).subscribe({
             next: (result) => {
               alert('Transfer Successful');

@@ -67,7 +67,8 @@ export class TransferComponent implements OnInit {
     if (
       this.request.fromAccNumber &&
       this.request.toAccNumber &&
-      this.request.amount
+      this.request.amount &&
+      this.request.transactionType
     ) {
       if (this.request.amount <= 0) {
         alert('Amount cannot be zero or less');

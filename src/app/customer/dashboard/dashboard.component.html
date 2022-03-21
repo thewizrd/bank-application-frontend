@@ -16,7 +16,12 @@
         <div *ngIf="accounts && accounts.length > 0">
           <div class="card shadow rounded" *ngFor="let account of accounts">
             <div class="alignright p-3">
-              <p>Account Type: {{ account.accountType }}</p>
+              <p *ngIf="account.accountType == 'CHECKING'">
+                Account Type: CURRENT
+              </p>
+              <p *ngIf="account.accountType == 'SAVINGS'">
+                Account Type: SAVINGS
+              </p>
               <p>Account Balance: {{ account.accountBalance }}</p>
               <p>Account Status: {{ account.accountStatus }}</p>
               <!-- <div class="form-check form-switch">

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { StaffNavGuard } from '../guards/staff-nav.guard';
 import { ApproveAccountComponent } from './approve-account/approve-account.component';
 import { ApproveBeneficiaryComponent } from './approve-beneficiary/approve-beneficiary.component';
 import { CustomerAccountsComponent } from './customer-accounts/customer-accounts.component';
@@ -15,26 +16,38 @@ const routes: Routes = [
   {
     path: 'staff/approve-account',
     component: ApproveAccountComponent,
+    canActivate: [StaffNavGuard],
+    canLoad: [StaffNavGuard],
   },
   {
     path: 'staff/approve-beneficiary',
     component: ApproveBeneficiaryComponent,
+    canActivate: [StaffNavGuard],
+    canLoad: [StaffNavGuard],
   },
   {
     path: 'staff/customer-accounts',
     component: CustomerAccountsComponent,
+    canActivate: [StaffNavGuard],
+    canLoad: [StaffNavGuard],
   },
   {
     path: 'staff/dashboard',
     component: CustomerAccountsComponent,
+    canActivate: [StaffNavGuard],
+    canLoad: [StaffNavGuard],
   },
   {
     path: 'staff/enable-disable-customer',
     component: EnableDisableCustomerComponent,
+    canActivate: [StaffNavGuard],
+    canLoad: [StaffNavGuard],
   },
   {
     path: 'staff/transfer',
     component: TransferComponent,
+    canActivate: [StaffNavGuard],
+    canLoad: [StaffNavGuard],
   },
 ];
 

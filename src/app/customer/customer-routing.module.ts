@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CustomerNavGuard } from '../guards/customer-nav.guard';
 import { AccountDetailsComponent } from './account-details/account-details.component';
 import { AddBeneficiaryComponent } from './add-beneficiary/add-beneficiary.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
@@ -27,22 +28,32 @@ const routes: Routes = [
   {
     path: 'customer/dashboard',
     component: DashboardComponent,
+    canActivate: [CustomerNavGuard],
+    canLoad: [CustomerNavGuard],
   },
   {
     path: 'customer/updateProfile',
     component: UpdateProfileComponent,
+    canActivate: [CustomerNavGuard],
+    canLoad: [CustomerNavGuard],
   },
   {
     path: 'customer/accountDetails',
     component: AccountDetailsComponent,
+    canActivate: [CustomerNavGuard],
+    canLoad: [CustomerNavGuard],
   },
   {
     path: 'customer/addBeneficiary',
     component: AddBeneficiaryComponent,
+    canActivate: [CustomerNavGuard],
+    canLoad: [CustomerNavGuard],
   },
   {
     path: 'customer/createAccount',
     component: CreateAccountComponent,
+    canActivate: [CustomerNavGuard],
+    canLoad: [CustomerNavGuard],
   },
   {
     path: 'customer/forgotPassword',
@@ -51,10 +62,14 @@ const routes: Routes = [
   {
     path: 'customer/removeBeneficiary',
     component: RemoveBeneficiaryComponent,
+    canActivate: [CustomerNavGuard],
+    canLoad: [CustomerNavGuard],
   },
   {
     path: 'customer/transfer',
     component: TransferComponent,
+    canActivate: [CustomerNavGuard],
+    canLoad: [CustomerNavGuard],
   },
   {
     path: 'customer/updatePassword',
@@ -67,6 +82,8 @@ const routes: Routes = [
   {
     path: 'customer/dashboard',
     component: DashboardComponent,
+    canActivate: [CustomerNavGuard],
+    canLoad: [CustomerNavGuard],
   },
 ];
 

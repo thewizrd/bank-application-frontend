@@ -28,7 +28,8 @@
             <tr *ngFor="let account of accounts">
               <td>{{ account.accountNumber }}</td>
               <td>{{ account.accountBalance }}</td>
-              <td>{{ account.accountType }}</td>
+              <td *ngIf="account.accountType == 'CHECKING'">CURRENT</td>
+              <td *ngIf="account.accountType == 'SAVINGS'">SAVINGS</td>
               <td class="text-center">
                 <input
                   class="form-check-input"
@@ -73,6 +74,35 @@
               min="0"
               [(ngModel)]="request.amount"
             />
+          </div>
+        </div>
+        <br />
+        <div style="border: 1px solid; padding: 5px">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="transactionType"
+              id="transactionTypeDebit"
+              value="DEBIT"
+              [(ngModel)]="request.transactionType"
+            />
+            <label class="form-check-label" for="transactionTypeDebit"
+              >Debit</label
+            >
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="transactionType"
+              id="transactionTypeCredit"
+              value="CREDIT"
+              [(ngModel)]="request.transactionType"
+            />
+            <label class="form-check-label" for="transactionTypeCredit">
+              Credit</label
+            >
           </div>
         </div>
         <br />
